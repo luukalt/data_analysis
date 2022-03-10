@@ -377,33 +377,18 @@ const thebe_selector_output = ".output, .cell_output"
 <h1>Mixture properties<a class="headerlink" href="#mixture-properties" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="mount-drive">
 <h2>Mount Drive<a class="headerlink" href="#mount-drive" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
-<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1783</span><span class="o">/</span><span class="mf">1408506528.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;google&#39;
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 <div class="section" id="read-unzip-packages-from-google-drive-and-add-them-to-the-correct-directory-in-colab">
 <h2>Read (unzip) packages from Google drive and add them to the correct directory in colab<a class="headerlink" href="#read-unzip-packages-from-google-drive-and-add-them-to-the-correct-directory-in-colab" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>unzip -o <span class="s2">&quot;/content/drive/MyDrive/Colab Notebooks/lib/cantera_env.zip&quot;</span> -d <span class="s2">&quot;/usr/local/lib/python3.7/site-packages/&quot;</span> <span class="p">&amp;</span>&gt; /dev/null
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !unzip -o &quot;/content/drive/MyDrive/Colab Notebooks/lib/cantera_env.zip&quot; -d &quot;/usr/local/lib/python3.7/site-packages/&quot; &amp;&gt; /dev/null</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="o">!</span>wget https://github.com/luukalt/data_analysis/raw/main/cantera_env.zip <span class="p">&amp;</span>&gt; /dev/null
+
+<span class="o">!</span>unzip -o <span class="s2">&quot;/content/cantera_env.zip&quot;</span> -d <span class="s2">&quot;/usr/local/lib/python3.7/site-packages/&quot;</span> <span class="p">&amp;</span>&gt; /dev/null
 
 <span class="n">colab_package_dir</span> <span class="o">=</span> <span class="s2">&quot;/usr/local/lib/python3.7/site-packages/&quot;</span>
 
@@ -427,6 +412,20 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1916</span><span class="o">/</span><span class="mf">2272744040.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">cantera</span> <span class="k">as</span> <span class="nn">ct</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;cantera&#39;
 </pre></div>
 </div>
 </div>
@@ -778,8 +777,8 @@ Adiabtic flame temperature = 1611.61 K
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mixture_properties_17_0.png" src="_images/mixture_properties_17_0.png" />
-<img alt="_images/mixture_properties_17_1.png" src="_images/mixture_properties_17_1.png" />
+<img alt="_images/mixture_properties_16_0.png" src="_images/mixture_properties_16_0.png" />
+<img alt="_images/mixture_properties_16_1.png" src="_images/mixture_properties_16_1.png" />
 </div>
 </div>
 <div class="section" id="save-figures">
