@@ -385,20 +385,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1754</span><span class="o">/</span><span class="mf">2272744040.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">cantera</span> <span class="k">as</span> <span class="nn">ct</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">sys</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;cantera&#39;
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="heating-values">
@@ -446,6 +432,35 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="c1"># LHV_H2 = heating_value(&#39;H2&#39;)</span>
 <span class="c1"># LHV_CH4 = heating_value(&#39;CH4&#39;)</span>
 <span class="c1"># LHV_C2H6 = heating_value(&#39;C2H6&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fuel   LHV (MJ/kg)   HHV (MJ/kg)
+DeprecationWarning: XML_Node::build: 
+The CTI and XML input file formats are deprecated and will be removed in
+Cantera 3.0. Use &#39;cti2yaml.py&#39; or &#39;ctml2yaml.py&#39; to convert CTI or XML input
+files to the YAML format. See https://cantera.org/tutorials/legacy2yaml.html
+for more information.
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1757</span><span class="o">/</span><span class="mf">612702308.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span> 
+<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="k">for</span> <span class="n">fuel</span> <span class="ow">in</span> <span class="n">fuels</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">35</span>     <span class="n">LHV</span><span class="p">,</span> <span class="n">HHV</span> <span class="o">=</span> <span class="n">heating_value</span><span class="p">(</span><span class="n">fuel</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:8s}</span><span class="s1"> </span><span class="si">{:7.3f}</span><span class="s1">      </span><span class="si">{:7.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fuel</span><span class="p">,</span> <span class="n">LHV</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">HHV</span><span class="o">/</span><span class="mf">1e6</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span> 
+
+<span class="nn">/tmp/ipykernel_1757/612702308.py</span> in <span class="ni">heating_value</span><span class="nt">(fuel)</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">water</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">Water</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="c1"># Set liquid water state, with vapor fraction x = 0</span>
+<span class="ne">---&gt; </span><span class="mi">13</span>     <span class="n">water</span><span class="o">.</span><span class="n">TX</span> <span class="o">=</span> <span class="n">T_u</span><span class="p">,</span> <span class="mi">0</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">h_liquid</span> <span class="o">=</span> <span class="n">water</span><span class="o">.</span><span class="n">h</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="c1"># Set gaseous water state, with vapor fraction x = 1</span>
+
+<span class="ne">AttributeError</span>: &#39;WaterWithTransport&#39; object has no attribute &#39;TX&#39;
 </pre></div>
 </div>
 </div>
