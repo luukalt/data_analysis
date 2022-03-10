@@ -10,3 +10,6 @@ parts:
   - caption: Analyses
     chapters:
     - file: mixture_properties
+  - caption: Analyses2
+    chapters:
+    - file: mixture_properties
