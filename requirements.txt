@@ -11,3 +11,4 @@ scipy
 vega_datasets
 coolprop
 conda
+cantera
