@@ -9,7 +9,4 @@ parts:
     - file: mixture_properties_copy
   - caption: Analyses
     chapters:
-    - file: mixture_properties
-  - caption: Analyses2
-    chapters:
-    - file: mixture_properties
+    - file: flame_front_analysis
