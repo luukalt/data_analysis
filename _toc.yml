@@ -6,4 +6,4 @@ root: intro
 parts:
   - caption: Analyses
     chapters:
-    - file: flame_front_analysis
+    - file: mixture_properties
