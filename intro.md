@@ -13,5 +13,5 @@ kernelspec:
 
 # Introduction
 
-Volg hier de analyse van mijn data! <br>
+Important Jupyter Notebooks and analysis of my data! <br>
 
