@@ -15,4 +15,3 @@ kernelspec:
 
 Volg hier de analyse van mijn data! <br>
 
-Luuk Altenburg
