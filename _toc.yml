@@ -6,7 +6,7 @@ root: intro
 parts:
   - caption: Notebooks
     chapters:
-    - file: mixture_properties_copy
+    - file: mixture_properties
   - caption: Analyses
     chapters:
     - file: flame_front_analysis
