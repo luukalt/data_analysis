@@ -97,19 +97,6 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Notebooks
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="mixture_properties_copy.html">
-   Mixture properties
-  </a>
- </li>
-</ul>
-
     </div>
 </nav> <!-- To handle the deprecated key -->
 
@@ -210,11 +197,6 @@ const thebe_selector_output = ".output, .cell_output"
      Mount Drive
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#read-unzip-packages-from-github-and-add-them-to-the-correct-directory-in-colab">
-     Read (unzip) packages from Github and add them to the correct directory in colab
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
@@ -302,11 +284,6 @@ const thebe_selector_output = ".output, .cell_output"
      Mount Drive
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#read-unzip-packages-from-github-and-add-them-to-the-correct-directory-in-colab">
-     Read (unzip) packages from Github and add them to the correct directory in colab
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
@@ -378,32 +355,12 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="mount-drive">
 <h2>Mount Drive<a class="headerlink" href="#mount-drive" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="read-unzip-packages-from-github-and-add-them-to-the-correct-directory-in-colab">
-<h2>Read (unzip) packages from Github and add them to the correct directory in colab<a class="headerlink" href="#read-unzip-packages-from-github-and-add-them-to-the-correct-directory-in-colab" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !unzip -o &quot;/content/drive/MyDrive/Colab Notebooks/lib/cantera_env.zip&quot; -d &quot;/usr/local/lib/python3.7/site-packages/&quot; &amp;&gt; /dev/null</span>
-
-<span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="o">!</span>wget https://github.com/luukalt/data_analysis/raw/main/cantera_env.zip <span class="p">&amp;</span>&gt; /dev/null
-
-<span class="o">!</span>unzip -o <span class="s2">&quot;/content/cantera_env.zip&quot;</span> -d <span class="s2">&quot;/usr/local/lib/python3.7/site-packages/&quot;</span> <span class="p">&amp;</span>&gt; /dev/null
-
-<span class="n">colab_package_dir</span> <span class="o">=</span> <span class="s2">&quot;/usr/local/lib/python3.7/site-packages/&quot;</span>
-
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">colab_package_dir</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="main">
 <h1><strong>Main</strong><a class="headerlink" href="#main" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="import-packages">
 <h2>Import packages<a class="headerlink" href="#import-packages" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cantera</span> <span class="k">as</span> <span class="nn">ct</span>
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -418,7 +375,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1776</span><span class="o">/</span><span class="mf">2272744040.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1769</span><span class="o">/</span><span class="mf">2272744040.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">cantera</span> <span class="k">as</span> <span class="nn">ct</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">sys</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -433,7 +390,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="heating-values">
 <h2>Heating values<a class="headerlink" href="#heating-values" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">heating_value</span><span class="p">(</span><span class="n">fuel</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Returns the LHV and HHV for the specified fuel &quot;&quot;&quot;</span>
@@ -485,7 +442,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h2>Laminar flame speed<a class="headerlink" href="#laminar-flame-speed" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="define-mixtures">
 <h3>Define mixtures<a class="headerlink" href="#define-mixtures" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Equivalence ratios    </span>
 <span class="n">phis</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]</span> <span class="c1"># Set equivalence ratios ranging from 0.4 to 0.8</span>
@@ -499,7 +456,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="flame-object-initialization-solve-equations">
 <h3>Flame object [initialization + solve equations]<a class="headerlink" href="#flame-object-initialization-solve-equations" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define colors to make distinction between different mixtures based on hydrogen percentage</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">H2_percentages</span><span class="p">)))</span>
@@ -652,7 +609,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="perform-calculations">
 <h3>Perform calculations<a class="headerlink" href="#perform-calculations" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize list for flame objects</span>
 <span class="n">flames</span> <span class="o">=</span> <span class="p">[]</span>
@@ -675,22 +632,13 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mixture solved: phi=0.5, H2%=100
-Laminar flame speed = 0.4007 m/s
-unburnt mixture temperature = 293.15 K
-Adiabtic flame temperature = 1611.61 K
-------------------------------------------------------
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="plots">
 <h1><strong>Plots</strong><a class="headerlink" href="#plots" title="Permalink to this headline">¶</a></h1>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% Plots A: Laminar flame speed/adiabatic flame temperture vs equivalence ratio</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
@@ -776,14 +724,10 @@ Adiabtic flame temperature = 1611.61 K
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/mixture_properties_16_0.png" src="_images/mixture_properties_16_0.png" />
-<img alt="_images/mixture_properties_16_1.png" src="_images/mixture_properties_16_1.png" />
-</div>
 </div>
 <div class="section" id="save-figures">
 <h2>Save figures<a class="headerlink" href="#save-figures" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path_saved_images</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/Colab Notebooks/flame_front_analysis_images/saved_images/&quot;</span>
 <span class="n">fig1</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path_saved_images</span> <span class="o">+</span> <span class="s2">&quot;SL0_phi_T_u=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">T_u</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;_p_u=&quot;</span> <span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">p_u</span><span class="p">))</span><span class="o">+</span> <span class="s2">&quot;.svg&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
