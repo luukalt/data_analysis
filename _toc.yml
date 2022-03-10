@@ -4,6 +4,10 @@
 format: jb-book
 root: intro
 parts:
-  - caption: Analyses
+  - caption: Notebooks
+    chapters:
+    - file: mixture_properties
+
+- caption: Flame front analysis
     chapters:
     - file: mixture_properties
