@@ -2,10 +2,7 @@ jupyter-book>=0.7.0b
 matplotlib
 numpy
 ipython
-altair
 bokeh
 plotly
-ipyvolume
 scipy
-coolprop
 conda

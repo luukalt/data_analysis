@@ -5,6 +5,7 @@ channels:
 dependencies:
   - ipython
   - conda
+  - jupyter-book
   - numpy
   - jupyterlab=3
   - jupyter
