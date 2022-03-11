@@ -1,3 +1,6 @@
-# Introduction
+#!/usr/bin/env python
+# coding: utf-8
 
-Important Jupyter Notebooks and analysis of my data! <br>
+# # Introduction
+# 
+# Important Jupyter Notebooks and analysis of flame (flashback) data! <br>

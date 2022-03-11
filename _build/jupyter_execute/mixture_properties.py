@@ -1,23 +1,33 @@
-# Mixture properties
-## Mount Drive
+#!/usr/bin/env python
+# coding: utf-8
 
-## Read (unzip) packages from Github and add them to the correct directory in colab
+# # Mixture properties
+# ## Mount Drive
+
+# ## Read (unzip) packages from Github and add them to the correct directory in colab
+
+# In[1]:
+
 
 # !unzip -o "/content/drive/MyDrive/Colab Notebooks/lib/cantera_env.zip" -d "/usr/local/lib/python3.7/site-packages/" &> /dev/null
 
 import sys
 
-!wget https://github.com/luukalt/data_analysis/raw/main/cantera_env.zip &> /dev/null
+get_ipython().system('wget https://github.com/luukalt/data_analysis/raw/main/cantera_env.zip &> /dev/null')
 
-!unzip -o "/content/cantera_env.zip" -d "/usr/local/lib/python3.7/site-packages/" &> /dev/null
+get_ipython().system('unzip -o "/content/cantera_env.zip" -d "/usr/local/lib/python3.7/site-packages/" &> /dev/null')
 
 colab_package_dir = "/usr/local/lib/python3.7/site-packages/"
 
 sys.path.append(colab_package_dir)
 
-# Main
 
-## Import packages
+# # Main
+
+# ## Import packages
+
+# In[2]:
+
 
 import cantera as ct
 import sys
@@ -27,7 +37,11 @@ import numpy as np
 import warnings
 warnings.filterwarnings('ignore')
 
-## Heating values
+
+# ## Heating values
+
+# In[3]:
+
 
 def heating_value(fuel):
     """ Returns the LHV and HHV for the specified fuel """
@@ -71,9 +85,13 @@ for fuel in fuels:
 # LHV_CH4 = heating_value('CH4')
 # LHV_C2H6 = heating_value('C2H6')
 
-## Laminar flame speed
 
-### Define mixtures
+# ## Laminar flame speed
+
+# ### Define mixtures
+
+# In[4]:
+
 
 # Equivalence ratios    
 phis = [0.5] # Set equivalence ratios ranging from 0.4 to 0.8
@@ -82,7 +100,10 @@ phis = [0.5] # Set equivalence ratios ranging from 0.4 to 0.8
 H2_percentages = [100] # Set hydrogen volume percentages of the fuel ranging from 0 to 100 
 
 
-### Flame object [initialization + solve equations]
+# ### Flame object [initialization + solve equations]
+
+# In[5]:
+
 
 # Define colors to make distinction between different mixtures based on hydrogen percentage
 colors = cm.viridis(np.linspace(0, 1, len(H2_percentages)))
@@ -229,7 +250,11 @@ class premixed_flame:
         self.X_N2O = self.gas["N2O"].X[0]
         
 
-### Perform calculations
+
+# ### Perform calculations
+
+# In[6]:
+
 
 # Initialize list for flame objects
 flames = []
@@ -250,7 +275,11 @@ for phi in phis:
       print('Adiabtic flame temperature = ' + str(round(flame.T_ad, 2)) + ' K')
       print('------------------------------------------------------')
 
-# Plots
+
+# # Plots
+
+# In[7]:
+
 
 #%% Plots A: Laminar flame speed/adiabatic flame temperture vs equivalence ratio
 plt.close('all')
@@ -334,8 +363,13 @@ ax2.legend()
 fig1.tight_layout() 
 fig2.tight_layout()
 
-### Save figures
+
+# ### Save figures
+
+# In[8]:
+
 
 path_saved_images = "/content/drive/MyDrive/Colab Notebooks/flame_front_analysis_images/saved_images/"
 fig1.savefig(path_saved_images + "SL0_phi_T_u=" + str(int(T_u)) + "_p_u=" +str(int(p_u))+ ".svg", dpi=300)
 fig2.savefig(path_saved_images + "Tad_phi_" + str(int(T_u)) + "_p_u=" +str(int(p_u))+ ".svg", dpi=300)
+
