@@ -25,4 +25,5 @@ dependencies:
   - sympy
   - opencv
   - progressbar2
+  - imutils
 
