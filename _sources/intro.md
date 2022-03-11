@@ -13,5 +13,5 @@ kernelspec:
 
 # Introduction
 
-Important Jupyter Notebooks and analysis of my data! <br>
+Important Jupyter Notebooks and analysis of flame (flashback) data! <br>
 
