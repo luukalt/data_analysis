@@ -23,4 +23,6 @@ dependencies:
   - voila
   - scipy
   - sympy
+  - opencv
+  - progressbar2
 
