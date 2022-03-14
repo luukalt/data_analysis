@@ -2,14 +2,14 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: docs/intro
+root: intro
 parts:
 - caption: Experiments
   chapters:
   - file: docs/experiments/combustor_tube/experiment_1
     sections:
     - file: docs/experiments/combustor_tube/analysis/flame_front_analysis
-    
+
 - caption: Notebooks
   chapters:
   - file: docs/notebooks/mixture_properties
