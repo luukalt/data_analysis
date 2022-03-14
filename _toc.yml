@@ -14,10 +14,10 @@ parts:
     chapters:
     - file: docs/experiments/combustor_tube/experiment_2
       sections:
-      - file: docs/experiments/combustor_tube/analysis/flame_front_analysis
+ #     - file: docs/experiments/combustor_tube/analysis/flame_front_analysis
 
   - caption: Experiment III:Quasi 2D FlameSheet combustor
     chapters:
     - file: docs/experiments/combustor_tube/experiment_3
       sections:
-      - file: docs/experiments/combustor_tube/analysis/flame_front_analysis
+ #     - file: docs/experiments/combustor_tube/analysis/flame_front_analysis
