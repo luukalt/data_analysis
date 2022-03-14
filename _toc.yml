@@ -4,6 +4,9 @@
 format: jb-book
 root: intro
 parts:
+  - caption: Experiments
+    chapters:
+    - file: mixture_properties
   - caption: Notebooks
     chapters:
     - file: mixture_properties
