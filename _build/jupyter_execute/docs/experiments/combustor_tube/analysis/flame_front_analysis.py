@@ -3,12 +3,12 @@
 
 # # Flame front analysis
 
-# # Statistics
+# ## Statistics
 # 
 # The goal of this notebook is to obtain the statistics regarding the flame front.
 # Filippo already reported the velocity fluctuations.
 # 
-# ## Velocity fluctuations
+# ### Velocity fluctuations
 # 
 # This part focuses on flame 1 and flame 2 of paper 1. Data is stored under Project Data (U:): **U:\High hydrogen\ffaldella\data**
 # 
@@ -49,7 +49,7 @@
 # Normalized mean velocity field $\overline{u}/U_{b}$, Normalized Reynolds normal stress in the axial $\overline{u'u'}/U_{b}^2$ and radial direction $\overline{v'v'}/U_{b}^2$, respectively. The dashed line indicates the average flame front location and is used to determine the flame cone angle.
 # ```
 
-# ## Distribution of flame front contours
+# ### Distribution of flame front contours
 # 
 # The flame front of the raw PIV images was detected using a self-made algorithm using Gaussian filters, enhancement of the images and eventually a binarization of the image.
 # {numref}`flame_1_frame0_B00004` shows an example.
