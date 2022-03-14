@@ -56,7 +56,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Mixture properties" href="mixture_properties.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -102,25 +101,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Notebooks
+  Tube burner
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="mixture_properties.html">
    Mixture properties
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Analyses
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Flame front analysis
   </a>
  </li>
 </ul>
@@ -299,7 +286,7 @@ Filippo already reported the velocity fluctuations.</p>
 <h2>Velocity fluctuations<a class="headerlink" href="#velocity-fluctuations" title="Permalink to this headline">¶</a></h2>
 <p>This part focuses on flame 1 and flame 2 of paper 1. Data is stored under Project Data (U:): <strong>U:\High hydrogen\ffaldella\data</strong></p>
 <table class="table" id="tab-flames-info">
-<caption><span class="caption-number">Table 1 </span><span class="caption-text">Specifications of flame 1 and 2.</span><a class="headerlink" href="#tab-flames-info" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Specifications of flame 1 and 2.</span><a class="headerlink" href="#tab-flames-info" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 20%" />
@@ -332,22 +319,22 @@ Filippo already reported the velocity fluctuations.</p>
 </table>
 <div class="figure align-default" id="flame-1-vel-fluc">
 <a class="reference internal image-reference" href="_images/flame_1.png"><img alt="_images/flame_1.png" src="_images/flame_1.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Normalized mean velocity field <span class="math notranslate nohighlight">\(\overline{u}/U_{b}\)</span>, Normalized Reynolds normal stress in the axial <span class="math notranslate nohighlight">\(\overline{u'u'}/U_{b}^2\)</span> and radial direction <span class="math notranslate nohighlight">\(\overline{v'v'}/U_{b}^2\)</span>, respectively. The dashed line indicates the average flame front location and is used to determine the flame cone angle.</span><a class="headerlink" href="#flame-1-vel-fluc" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Normalized mean velocity field <span class="math notranslate nohighlight">\(\overline{u}/U_{b}\)</span>, Normalized Reynolds normal stress in the axial <span class="math notranslate nohighlight">\(\overline{u'u'}/U_{b}^2\)</span> and radial direction <span class="math notranslate nohighlight">\(\overline{v'v'}/U_{b}^2\)</span>, respectively. The dashed line indicates the average flame front location and is used to determine the flame cone angle.</span><a class="headerlink" href="#flame-1-vel-fluc" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="flame-2-vel-fluc">
 <a class="reference internal image-reference" href="_images/flame_2.png"><img alt="_images/flame_2.png" src="_images/flame_2.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Normalized mean velocity field <span class="math notranslate nohighlight">\(\overline{u}/U_{b}\)</span>, Normalized Reynolds normal stress in the axial <span class="math notranslate nohighlight">\(\overline{u'u'}/U_{b}^2\)</span> and radial direction <span class="math notranslate nohighlight">\(\overline{v'v'}/U_{b}^2\)</span>, respectively. The dashed line indicates the average flame front location and is used to determine the flame cone angle.</span><a class="headerlink" href="#flame-2-vel-fluc" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Normalized mean velocity field <span class="math notranslate nohighlight">\(\overline{u}/U_{b}\)</span>, Normalized Reynolds normal stress in the axial <span class="math notranslate nohighlight">\(\overline{u'u'}/U_{b}^2\)</span> and radial direction <span class="math notranslate nohighlight">\(\overline{v'v'}/U_{b}^2\)</span>, respectively. The dashed line indicates the average flame front location and is used to determine the flame cone angle.</span><a class="headerlink" href="#flame-2-vel-fluc" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="distribution-of-flame-front-contours">
 <h2>Distribution of flame front contours<a class="headerlink" href="#distribution-of-flame-front-contours" title="Permalink to this headline">¶</a></h2>
 <p>The flame front of the raw PIV images was detected using a self-made algorithm using Gaussian filters, enhancement of the images and eventually a binarization of the image.
-<a class="reference internal" href="#flame-1-frame0-b00004"><span class="std std-numref">Fig. 3</span></a> shows an example.</p>
+<code class="xref std std-numref docutils literal notranslate"><span class="pre">flame_1_frame0_B00004</span></code> shows an example.</p>
 <div class="figure align-default" id="flame-1-frame0-b00004">
 <a class="reference internal image-reference" href="_images/B00004.png"><img alt="_images/B00004.png" src="_images/B00004.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Raw PIV image with the flame front contour as determined by the self-made algorithm (red line).</span><a class="headerlink" href="#flame-1-frame0-b00004" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Raw PIV image with the flame front contour as determined by the self-made algorithm (red line).</span><a class="headerlink" href="#flame-1-frame0-b00004" title="Permalink to this image">¶</a></p>
 </div>
-<p><a class="reference internal" href="#flame-1-pdf-front-5000"><span class="std std-numref">Fig. 4</span></a> and <a class="reference internal" href="#flame-2-pdf-front-5000"><span class="std std-numref">Fig. 5</span></a> show the distribution of the flame front for 5000 images.</p>
+<p><code class="xref std std-numref docutils literal notranslate"><span class="pre">flame_1_pdf_front_5000</span></code> and <code class="xref std std-numref docutils literal notranslate"><span class="pre">flame_2_pdf_front_5000</span></code> show the distribution of the flame front for 5000 images.</p>
 <div class="sphinx-bs container-fluid docutils">
 <div class="row docutils">
 <div class="d-flex col-xl-6 docutils">
@@ -355,7 +342,7 @@ Filippo already reported the velocity fluctuations.</p>
 <div class="card-body docutils">
 <div class="figure align-default" id="flame-1-pdf-front-5000">
 <a class="reference internal image-reference" href="_images/flame_1_pdf_front_5000.png"><img alt="_images/flame_1_pdf_front_5000.png" src="_images/flame_1_pdf_front_5000.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">PDF of flame front contours of flame 1</span><a class="headerlink" href="#flame-1-pdf-front-5000" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">PDF of flame front contours of flame 1</span><a class="headerlink" href="#flame-1-pdf-front-5000" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -365,7 +352,7 @@ Filippo already reported the velocity fluctuations.</p>
 <div class="card-body docutils">
 <div class="figure align-default" id="flame-2-pdf-front-5000">
 <a class="reference internal image-reference" href="_images/flame_2_pdf_front_5000.png"><img alt="_images/flame_2_pdf_front_5000.png" src="_images/flame_2_pdf_front_5000.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">PDF of flame front contours of flame 2</span><a class="headerlink" href="#flame-2-pdf-front-5000" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">PDF of flame front contours of flame 2</span><a class="headerlink" href="#flame-2-pdf-front-5000" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -399,14 +386,7 @@ Filippo already reported the velocity fluctuations.</p>
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="mixture_properties.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Mixture properties</p>
-        </div>
-    </a>
+<div class='prev-next-area'>
 </div>
             
         </div>
