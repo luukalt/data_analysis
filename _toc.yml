@@ -4,12 +4,12 @@
 format: jb-book
 root: intro
 parts:
-  - caption: Experiments
+  - caption: Tube burner
     chapters:
     - file: mixture_properties
   - caption: Notebooks
     chapters:
-    - file: mixture_properties
+    - file: docs/notebooks/mixture_properties
   - caption: Analyses
     chapters:
-    - file: flame_front_analysis
+    - file: docs/flame_front_analysis
