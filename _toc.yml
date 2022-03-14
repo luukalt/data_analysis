@@ -6,16 +6,18 @@ root: intro
 parts:
   - caption: Experiment I:Tube burner
     chapters:
-    - file: docs/experiments/combustor_tube/analysis/flame_front_analysis
+    - file: docs/experiments/combustor_tube/experiment_1
+      sections:
+      - file: docs/experiments/combustor_tube/analysis/flame_front_analysis
 
   - caption: Experiment II:Scaled FlameSheet combustor
     chapters:
-    
-    - file: docs/experiments/combustor_flamesheet_cyl/analysis/flame_front_analysis
+    - file: docs/experiments/combustor_tube/experiment_2
+      sections:
+      - file: docs/experiments/combustor_tube/analysis/flame_front_analysis
 
   - caption: Experiment III:Quasi 2D FlameSheet combustor
     chapters:
-    - file: docs/experiments/combustor_flamesheet_2d/analysis/flame_front_analysis
-  - caption: Notebooks
-    chapters:
-    - file: docs/notebooks/mixture_properties  
+    - file: docs/experiments/combustor_tube/experiment_3
+      sections:
+      - file: docs/experiments/combustor_tube/analysis/flame_front_analysis
