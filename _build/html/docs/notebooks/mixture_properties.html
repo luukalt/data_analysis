@@ -1,0 +1,754 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mixture properties &#8212; High hydrogen project</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Introduction" href="../../intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/B00004.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">High hydrogen project</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Notebooks
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Mixture properties
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/notebooks/mixture_properties.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/luukalt/data_analysis"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/luukalt/data_analysis/main?urlpath=lab/tree/docs/notebooks/mixture_properties.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/luukalt/data_analysis/blob/main/docs/notebooks/mixture_properties.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#read-unzip-packages-from-github-and-add-them-to-the-correct-directory-in-colab">
+   Read (unzip) packages from Github and add them to the correct directory in colab
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-packages">
+   Import packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#heating-values">
+   Heating values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#laminar-flame-speed">
+   Laminar flame speed
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#premixed-flame-class-initialization-of-unburnt-mixtures-and-solver-of-1d-governing-equations">
+     Premixed flame class [initialization of unburnt mixtures AND solver of 1D governing equations]
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#define-mixtures">
+     Define mixtures
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#perform-calculations">
+     Perform calculations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plots">
+     Plots
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Mixture properties</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#read-unzip-packages-from-github-and-add-them-to-the-correct-directory-in-colab">
+   Read (unzip) packages from Github and add them to the correct directory in colab
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-packages">
+   Import packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#heating-values">
+   Heating values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#laminar-flame-speed">
+   Laminar flame speed
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#premixed-flame-class-initialization-of-unburnt-mixtures-and-solver-of-1d-governing-equations">
+     Premixed flame class [initialization of unburnt mixtures AND solver of 1D governing equations]
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#define-mixtures">
+     Define mixtures
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#perform-calculations">
+     Perform calculations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plots">
+     Plots
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="mixture-properties">
+<h1>Mixture properties<a class="headerlink" href="#mixture-properties" title="Permalink to this headline">¶</a></h1>
+<p>The notebook can be used in Google Colab (see rocket button).</p>
+<div class="section" id="read-unzip-packages-from-github-and-add-them-to-the-correct-directory-in-colab">
+<h2>Read (unzip) packages from Github and add them to the correct directory in colab<a class="headerlink" href="#read-unzip-packages-from-github-and-add-them-to-the-correct-directory-in-colab" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run this code cell when using Google colab, otherwise there is no need to run this code cell</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">!</span>wget https://github.com/luukalt/data_analysis/raw/main/cantera_env.zip <span class="p">&amp;</span>&gt; /dev/null
+<span class="o">!</span>unzip -o <span class="s2">&quot;/content/cantera_env.zip&quot;</span> -d <span class="s2">&quot;/usr/local/lib/python3.7/site-packages/&quot;</span> <span class="p">&amp;</span>&gt; /dev/null
+<span class="n">colab_package_dir</span> <span class="o">=</span> <span class="s2">&quot;/usr/local/lib/python3.7/site-packages/&quot;</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">colab_package_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="import-packages">
+<h2>Import packages<a class="headerlink" href="#import-packages" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cantera</span> <span class="k">as</span> <span class="nn">ct</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="heating-values">
+<h2>Heating values<a class="headerlink" href="#heating-values" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">heating_value</span><span class="p">(</span><span class="n">fuel</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Returns the LHV and HHV for the specified fuel &quot;&quot;&quot;</span>
+    <span class="n">gas</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">Solution</span><span class="p">(</span><span class="s1">&#39;gri30.xml&#39;</span><span class="p">)</span>
+    <span class="n">T_u</span> <span class="o">=</span> <span class="mf">293.15</span>
+    <span class="n">p_u</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">one_atm</span>
+    <span class="n">gas</span><span class="o">.</span><span class="n">TP</span> <span class="o">=</span> <span class="n">T_u</span><span class="p">,</span> <span class="n">p_u</span>
+    <span class="n">gas</span><span class="o">.</span><span class="n">set_equivalence_ratio</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">fuel</span><span class="p">,</span> <span class="s1">&#39;O2:1.0&#39;</span><span class="p">)</span>
+    <span class="n">h1</span> <span class="o">=</span> <span class="n">gas</span><span class="o">.</span><span class="n">enthalpy_mass</span>
+    <span class="n">Y_fuel</span> <span class="o">=</span> <span class="n">gas</span><span class="p">[</span><span class="n">fuel</span><span class="p">]</span><span class="o">.</span><span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">water</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">Water</span><span class="p">()</span>
+    <span class="c1"># Set liquid water state, with vapor fraction x = 0</span>
+    <span class="n">water</span><span class="o">.</span><span class="n">TX</span> <span class="o">=</span> <span class="n">T_u</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="n">h_liquid</span> <span class="o">=</span> <span class="n">water</span><span class="o">.</span><span class="n">h</span>
+    <span class="c1"># Set gaseous water state, with vapor fraction x = 1</span>
+    <span class="n">water</span><span class="o">.</span><span class="n">TX</span> <span class="o">=</span> <span class="n">T_u</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="n">h_gas</span> <span class="o">=</span> <span class="n">water</span><span class="o">.</span><span class="n">h</span>
+
+    <span class="c1"># complete combustion products</span>
+    <span class="n">Y_products</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;CO2&#39;</span><span class="p">:</span> <span class="n">gas</span><span class="o">.</span><span class="n">elemental_mole_fraction</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">),</span>
+                  <span class="s1">&#39;H2O&#39;</span><span class="p">:</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">gas</span><span class="o">.</span><span class="n">elemental_mole_fraction</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">),</span>
+                  <span class="s1">&#39;N2&#39;</span><span class="p">:</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">gas</span><span class="o">.</span><span class="n">elemental_mole_fraction</span><span class="p">(</span><span class="s1">&#39;N&#39;</span><span class="p">)}</span>
+
+    <span class="n">gas</span><span class="o">.</span><span class="n">TPX</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">Y_products</span>
+    <span class="n">Y_H2O</span> <span class="o">=</span> <span class="n">gas</span><span class="p">[</span><span class="s1">&#39;H2O&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">h2</span> <span class="o">=</span> <span class="n">gas</span><span class="o">.</span><span class="n">enthalpy_mass</span>
+    <span class="n">LHV</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">h2</span><span class="o">-</span><span class="n">h1</span><span class="p">)</span><span class="o">/</span><span class="n">Y_fuel</span>
+    <span class="n">HHV</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">h2</span><span class="o">-</span><span class="n">h1</span> <span class="o">+</span> <span class="p">(</span><span class="n">h_liquid</span><span class="o">-</span><span class="n">h_gas</span><span class="p">)</span> <span class="o">*</span> <span class="n">Y_H2O</span><span class="p">)</span><span class="o">/</span><span class="n">Y_fuel</span>
+    <span class="k">return</span> <span class="n">LHV</span><span class="p">,</span> <span class="n">HHV</span>
+
+<span class="n">fuels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;H2&#39;</span><span class="p">,</span> <span class="s1">&#39;CH4&#39;</span><span class="p">,</span> <span class="s1">&#39;C2H6&#39;</span><span class="p">,</span> <span class="s1">&#39;C3H8&#39;</span><span class="p">,</span> <span class="s1">&#39;NH3&#39;</span><span class="p">,</span> <span class="s1">&#39;CH3OH&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;fuel   LHV (MJ/kg)   HHV (MJ/kg)&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">fuel</span> <span class="ow">in</span> <span class="n">fuels</span><span class="p">:</span>
+    <span class="n">LHV</span><span class="p">,</span> <span class="n">HHV</span> <span class="o">=</span> <span class="n">heating_value</span><span class="p">(</span><span class="n">fuel</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:8s}</span><span class="s1"> </span><span class="si">{:7.3f}</span><span class="s1">      </span><span class="si">{:7.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fuel</span><span class="p">,</span> <span class="n">LHV</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">HHV</span><span class="o">/</span><span class="mf">1e6</span><span class="p">))</span>
+
+<span class="c1"># # Lower Heating Values of well-known combustion fuels</span>
+<span class="c1"># LHV_H2 = heating_value(&#39;H2&#39;)</span>
+<span class="c1"># LHV_CH4 = heating_value(&#39;CH4&#39;)</span>
+<span class="c1"># LHV_C2H6 = heating_value(&#39;C2H6&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="laminar-flame-speed">
+<h2>Laminar flame speed<a class="headerlink" href="#laminar-flame-speed" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="premixed-flame-class-initialization-of-unburnt-mixtures-and-solver-of-1d-governing-equations">
+<h3>Premixed flame class [initialization of unburnt mixtures AND solver of 1D governing equations]<a class="headerlink" href="#premixed-flame-class-initialization-of-unburnt-mixtures-and-solver-of-1d-governing-equations" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% Premixed flame object</span>
+<span class="k">class</span> <span class="nc">premixed_flame</span><span class="p">:</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">H2_percentage</span><span class="p">,</span> <span class="n">T_u</span><span class="o">=</span><span class="mf">293.15</span><span class="p">,</span> <span class="n">p_u</span><span class="o">=</span><span class="mi">101325</span><span class="p">):</span>
+
+        <span class="c1"># Color and label for plots</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">H2_percentages</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">H2_percentage</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">H2_percentage</span><span class="p">))</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;$\% H_2$&#39;</span> 
+        
+        <span class="c1">#%% Constants</span>
+        <span class="n">R_gas_mol</span> <span class="o">=</span> <span class="mi">8314</span> <span class="c1"># Universal gas constant [units: J*K^-1*kmol^-1]</span>
+        <span class="n">R_gas_mass</span> <span class="o">=</span> <span class="mi">287</span> <span class="c1"># universal gas constant [units: J*K^-1*kg^-1]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">T_u</span> <span class="o">=</span> <span class="n">T_u</span>      <span class="c1"># Inlet temperature in K</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_u</span> <span class="o">=</span> <span class="n">p_u</span>    <span class="c1"># Inlet pressure in Pa</span>
+        
+        <span class="c1"># Molar mass of species [units: kg*kmol^-1]</span>
+        <span class="n">M_H</span> <span class="o">=</span> <span class="mf">1.008</span> 
+        <span class="n">M_C</span> <span class="o">=</span> <span class="mf">12.011</span>
+        <span class="n">M_N</span> <span class="o">=</span> <span class="mf">14.007</span>
+        <span class="n">M_O</span> <span class="o">=</span> <span class="mf">15.999</span>
+        <span class="n">M_H2</span> <span class="o">=</span> <span class="n">M_H</span><span class="o">*</span><span class="mi">2</span>
+        <span class="n">M_CH4</span> <span class="o">=</span> <span class="n">M_C</span> <span class="o">+</span> <span class="n">M_H</span><span class="o">*</span><span class="mi">4</span>
+        <span class="n">M_CO2</span> <span class="o">=</span> <span class="n">M_C</span> <span class="o">+</span> <span class="n">M_O</span><span class="o">*</span><span class="mi">4</span>
+        
+        <span class="c1"># Define volume fractions of species in air [units: -]</span>
+        <span class="n">f_O2</span> <span class="o">=</span> <span class="mf">0.21</span>
+        <span class="n">f_N2</span> <span class="o">=</span> <span class="mf">0.78</span>
+        <span class="n">f_AR</span> <span class="o">=</span> <span class="mf">0.01</span>
+        
+        <span class="c1"># # Define composition of DNG in volume percentages</span>
+        <span class="c1"># REST_in_DNG_percentage = 0.6</span>
+        <span class="c1"># CH4_percentage = 81.3*(1 + REST_in_DNG_percentage/100) # Volume percentage of CH4 in DNG</span>
+        <span class="c1"># C2H6_percentage = 3.7*(1 + REST_in_DNG_percentage/100) # Volume percentage of C2H6 in DNG</span>
+        <span class="c1"># N2_in_DNG_percentage = 14.4*(1 + REST_in_DNG_percentage/100) # Volume percentage of N2 in DNG</span>
+        <span class="n">CH4_percentage</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># Volume percentage of CH4 in DNG</span>
+        
+        <span class="n">rho_H2</span> <span class="o">=</span> <span class="n">M_H2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">p_u</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">T_u</span><span class="o">*</span><span class="n">R_gas_mol</span><span class="p">)</span>
+        <span class="n">rho_CH4</span> <span class="o">=</span> <span class="n">M_CH4</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">p_u</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">T_u</span><span class="o">*</span><span class="n">R_gas_mol</span><span class="p">)</span>
+        <span class="n">rho_CO2</span> <span class="o">=</span> <span class="n">M_CO2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">p_u</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">T_u</span><span class="o">*</span><span class="n">R_gas_mol</span><span class="p">)</span>
+        
+        <span class="c1"># Equivalence ratio</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">phi</span> <span class="o">=</span> <span class="n">phi</span>
+        
+        <span class="c1"># Hydrogen percentage of fuel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">H2_percentage</span> <span class="o">=</span> <span class="n">H2_percentage</span>
+        
+        <span class="c1"># DNG percentage of fuel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">DNG_percentage</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">H2_percentage</span>
+                                  
+        <span class="c1"># Volume fractions of fuel</span>
+        <span class="n">f_H2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H2_percentage</span><span class="o">/</span><span class="mi">100</span>
+        <span class="n">f_DNG</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DNG_percentage</span><span class="o">/</span><span class="mi">100</span>
+        <span class="n">f_CH4</span> <span class="o">=</span> <span class="n">f_DNG</span><span class="o">*</span><span class="p">(</span><span class="n">CH4_percentage</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span>
+        <span class="c1"># f_C2H6 = f_DNG*(C2H6_percentage/100)</span>
+        <span class="c1"># f_N2_in_DNG = f_DNG*(N2_in_DNG_percentage/100)</span>
+        
+        <span class="c1"># Check if volume fractions of fuel and air are correct</span>
+        <span class="n">check_air</span> <span class="o">=</span> <span class="n">f_O2</span> <span class="o">+</span> <span class="n">f_N2</span> <span class="o">+</span> <span class="n">f_AR</span>
+        <span class="c1"># check_fuel = f_H2 + f_CH4 + f_C2H6 + f_N2_in_DNG</span>
+        <span class="n">check_fuel</span> <span class="o">=</span> <span class="n">f_H2</span> <span class="o">+</span> <span class="n">f_CH4</span>
+        <span class="k">if</span> <span class="n">check_air</span> <span class="o">==</span> <span class="mf">1.0</span> <span class="ow">and</span> <span class="nb">round</span><span class="p">(</span><span class="n">check_fuel</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="s2">&quot;fuel or air composition is incorrect!&quot;</span><span class="p">)</span>
+            
+        <span class="k">if</span> <span class="nb">round</span><span class="p">(</span><span class="n">check_fuel</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="s2">&quot;fuel composition is incorrect!&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Definition of the mixture</span>
+        <span class="c1"># 1. Set the reaction mechanism</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gas</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">Solution</span><span class="p">(</span><span class="s1">&#39;gri30.xml&#39;</span><span class="p">)</span>
+        
+        <span class="c1"># 2. Define the fuel and air composition</span>
+        <span class="c1"># fuel = {&#39;H2&#39;:f_H2, &#39;CH4&#39;:f_CH4, &#39;C2H6&#39;:f_C2H6, &#39;N2&#39;:f_N2_in_DNG}</span>
+        <span class="n">fuel</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H2&#39;</span><span class="p">:</span><span class="n">f_H2</span><span class="p">,</span> <span class="s1">&#39;CH4&#39;</span><span class="p">:</span><span class="n">f_CH4</span><span class="p">}</span>
+        <span class="n">air</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;N2&#39;</span><span class="p">:</span><span class="n">f_N2</span><span class="o">/</span><span class="n">f_O2</span><span class="p">,</span> <span class="s1">&#39;O2&#39;</span><span class="p">:</span><span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;AR&#39;</span><span class="p">:</span><span class="n">f_AR</span><span class="o">/</span><span class="n">f_O2</span><span class="p">}</span>   
+        
+        <span class="c1"># 3. Set the equivalence ratio</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="o">.</span><span class="n">set_equivalence_ratio</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span> <span class="n">fuel</span><span class="p">,</span> <span class="n">air</span><span class="p">)</span>
+        
+        <span class="c1"># 4. Set the transport model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="o">.</span><span class="n">transport_model</span><span class="o">=</span> <span class="s1">&#39;Multi&#39;</span>
+        
+        <span class="c1"># 5. Set the unburnt mixture temperature and pressure</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="o">.</span><span class="n">TP</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">T_u</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_u</span>
+
+        <span class="c1"># Unburnt mixture properties</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h_u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="o">.</span><span class="n">enthalpy_mass</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cp_u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="o">.</span><span class="n">cp_mass</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cv_u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="o">.</span><span class="n">cv_mass</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rho_u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="o">.</span><span class="n">density_mass</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mu_u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="o">.</span><span class="n">viscosity</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nu_u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_u</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">rho_u</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lambda_u</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="o">.</span><span class="n">thermal_conductivity</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha_u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lambda_u</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rho_u</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">cp_u</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">solve_equations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        
+        <span class="c1"># Check molar and mass fractions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_H2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="p">[</span><span class="s2">&quot;H2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_CH4</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="p">[</span><span class="s2">&quot;CH4&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_C2H6</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="p">[</span><span class="s2">&quot;C2H6&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_O2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="p">[</span><span class="s2">&quot;O2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_N2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="p">[</span><span class="s2">&quot;N2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_Ar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="p">[</span><span class="s2">&quot;AR&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="c1"># Set domain size (1D)</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="mf">0.05</span>  <span class="c1"># units: m</span>
+        
+        <span class="c1"># Create object for freely-propagating premixed flames</span>
+        <span class="n">flame</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">FreeFlame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">)</span>
+        
+        <span class="c1"># Set the criteria used to refine one domain</span>
+        <span class="n">flame</span><span class="o">.</span><span class="n">set_refine_criteria</span><span class="p">(</span><span class="n">ratio</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">curve</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+        
+        <span class="c1"># Solve the equations</span>
+        <span class="n">flame</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">loglevel</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">auto</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        
+        <span class="c1"># Result 1: Laminar flame speed</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">S_L0</span> <span class="o">=</span> <span class="n">flame</span><span class="o">.</span><span class="n">velocity</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># m/s</span>
+        
+        <span class="c1"># Result 2: Adiabtaic flame temperature</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">T_ad</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="o">.</span><span class="n">T</span>
+        
+        <span class="c1"># burnt mixture properties</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h_b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="o">.</span><span class="n">enthalpy_mass</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cp_b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="o">.</span><span class="n">cp_mass</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cv_b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="o">.</span><span class="n">cv_mass</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rho_b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="o">.</span><span class="n">density_mass</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mu_b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="o">.</span><span class="n">viscosity</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nu_b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_b</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">rho_b</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lambda_b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="o">.</span><span class="n">thermal_conductivity</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha_b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lambda_b</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rho_b</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">cp_b</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_CO2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="p">[</span><span class="s2">&quot;CO2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_NO2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="p">[</span><span class="s2">&quot;NO2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_NO</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="p">[</span><span class="s2">&quot;NO&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_N2O</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gas</span><span class="p">[</span><span class="s2">&quot;N2O&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="define-mixtures">
+<h3>Define mixtures<a class="headerlink" href="#define-mixtures" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Equivalence ratios    </span>
+<span class="n">phis</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]</span> <span class="c1"># Set equivalence ratios ranging from 0.4 to 0.8</span>
+
+<span class="c1"># Hydrogen percentages by volume of fuel</span>
+<span class="n">H2_percentages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="c1"># Set hydrogen volume percentages of the fuel ranging from 0 to 100 </span>
+
+<span class="c1"># Define colors to make distinction between different mixtures based on hydrogen percentage</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">H2_percentages</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="perform-calculations">
+<h3>Perform calculations<a class="headerlink" href="#perform-calculations" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize list for premixed flame objects</span>
+<span class="n">flames</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Create flame objects and start simulations</span>
+<span class="k">for</span> <span class="n">phi</span> <span class="ow">in</span> <span class="n">phis</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">H2_percentage</span> <span class="ow">in</span> <span class="n">H2_percentages</span><span class="p">:</span>
+
+      <span class="n">flame</span> <span class="o">=</span> <span class="n">premixed_flame</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span> <span class="n">H2_percentage</span><span class="p">)</span>
+      <span class="n">flame</span><span class="o">.</span><span class="n">solve_equations</span><span class="p">()</span>
+      <span class="n">flames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">flame</span><span class="p">)</span>
+      <span class="n">T_u</span> <span class="o">=</span> <span class="n">flame</span><span class="o">.</span><span class="n">T_u</span>
+      <span class="n">p_u</span> <span class="o">=</span> <span class="n">flame</span><span class="o">.</span><span class="n">p_u</span>
+      
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mixture solved: phi=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, H2%=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">H2_percentage</span><span class="p">))</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Laminar flame speed = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">flame</span><span class="o">.</span><span class="n">S_L0</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; m/s&#39;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;unburnt mixture temperature = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">flame</span><span class="o">.</span><span class="n">T_u</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; K&#39;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Adiabtic flame temperature = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">flame</span><span class="o">.</span><span class="n">T_ad</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; K&#39;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;------------------------------------------------------&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plots">
+<h3>Plots<a class="headerlink" href="#plots" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% Plots A: Laminar flame speed/adiabatic flame temperture vs equivalence ratio</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot parameters</span>
+<span class="n">fontsize</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
+<span class="n">markersize</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">linewidth</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;None&#39;</span>
+
+<span class="n">fig_width</span> <span class="o">=</span> <span class="mf">6.4</span>
+<span class="n">fig_height</span> <span class="o">=</span> <span class="mf">4.8</span>
+<span class="n">scale_factor</span> <span class="o">=</span> <span class="mf">1.25</span>
+
+<span class="c1"># Figure 1: Laminar flame speed vs equivalence ratio</span>
+<span class="n">fig1</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">fig_width</span><span class="o">*</span><span class="n">scale_factor</span><span class="p">,</span> <span class="n">fig_height</span><span class="o">*</span><span class="n">scale_factor</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\phi$ [-]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$S_L0$ [cm.s$^{-1}$]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">phis</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.25</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Laminar flame speed vs. equivalence ratio </span><span class="se">\n</span><span class="s1"> $T_u=$&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">T_u</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; K, $p_u$=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p_u</span><span class="o">*</span><span class="mf">1e-5</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; bar&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+<span class="c1"># Figure 2: Adiabatic flame temperature vs equivalence ratio</span>
+<span class="n">fig2</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">fig_width</span><span class="o">*</span><span class="n">scale_factor</span><span class="p">,</span> <span class="n">fig_height</span><span class="o">*</span><span class="n">scale_factor</span><span class="p">))</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\phi$ [-]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$T_</span><span class="si">{ad}</span><span class="s1">$ [K]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">phis</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.25</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">2800</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Adiabtic flame temperature vs. equivalence ratio </span><span class="se">\n</span><span class="s1"> $T_u=$&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">T_u</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; K, $p_u$=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p_u</span><span class="o">*</span><span class="mf">1e-5</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; bar&#39;</span><span class="p">)</span>
+
+<span class="c1"># Initialize list for laminar flame speeds</span>
+<span class="n">S_L0_lists</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">H2_percentages</span><span class="p">))]</span>
+<span class="c1"># Initialize list for adiabatic flame temperatures</span>
+<span class="n">T_ad_lists</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">H2_percentages</span><span class="p">))]</span>
+
+<span class="c1"># Fill Figure 1 and 2</span>
+<span class="k">for</span> <span class="n">flame</span> <span class="ow">in</span> <span class="n">flames</span><span class="p">:</span>
+    
+    <span class="n">index</span> <span class="o">=</span> <span class="n">H2_percentages</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">flame</span><span class="o">.</span><span class="n">H2_percentage</span><span class="p">)</span>
+    
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">flame</span><span class="o">.</span><span class="n">phi</span><span class="p">,</span> <span class="n">flame</span><span class="o">.</span><span class="n">S_L0</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="n">linestyle</span><span class="p">,</span>  <span class="n">marker</span><span class="o">=</span><span class="n">marker</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="n">markersize</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">flame</span><span class="o">.</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">flame</span><span class="o">.</span><span class="n">label</span> <span class="k">if</span> <span class="n">flame</span><span class="o">.</span><span class="n">phi</span> <span class="o">==</span> <span class="n">phis</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">flame</span><span class="o">.</span><span class="n">phi</span><span class="p">,</span> <span class="n">flame</span><span class="o">.</span><span class="n">T_ad</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="n">linestyle</span><span class="p">,</span>  <span class="n">marker</span><span class="o">=</span><span class="n">marker</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="n">markersize</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">flame</span><span class="o">.</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">flame</span><span class="o">.</span><span class="n">label</span> <span class="k">if</span> <span class="n">flame</span><span class="o">.</span><span class="n">phi</span> <span class="o">==</span> <span class="n">phis</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="n">S_L0_lists</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">S_L0_lists</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">flame</span><span class="o">.</span><span class="n">S_L0</span><span class="p">)</span>
+    <span class="n">T_ad_lists</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">T_ad_lists</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">flame</span><span class="o">.</span><span class="n">T_ad</span><span class="p">)</span>
+
+<span class="c1"># Plot polynomial fits to show trends for laminar flame speed and adiabatic flame temperature as a function of the equivalence ratio </span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">phis</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Create zipped lists for polynomial fits</span>
+    <span class="n">lists_zipped</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">S_L0_lists</span><span class="p">,</span> <span class="n">T_ad_lists</span><span class="p">,</span> <span class="n">colors</span><span class="p">)</span>
+    
+    <span class="c1"># Order of polynomial</span>
+    <span class="n">poly_order</span> <span class="o">=</span> <span class="mi">4</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="n">S_L0</span><span class="p">,</span> <span class="n">T_ad</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span> <span class="ow">in</span> <span class="n">lists_zipped</span><span class="p">:</span>
+        <span class="c1"># Create new array for phi</span>
+        <span class="n">phis_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">phis</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">phis</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        
+        <span class="c1"># Plot 3th order polynomial fit for laminar flame speed </span>
+        <span class="n">coeff_S_L0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">phis</span><span class="p">,</span> <span class="n">S_L0</span><span class="p">,</span> <span class="n">poly_order</span><span class="p">)</span>
+        <span class="n">poly_S_L0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">coeff_S_L0</span><span class="p">)</span>
+        <span class="n">S_L0_fit</span> <span class="o">=</span> <span class="n">poly_S_L0</span><span class="p">(</span><span class="n">phis_fit</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">phis_fit</span><span class="p">,</span> <span class="n">S_L0_fit</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+        
+        <span class="c1"># Plot 3th order polynomial fit for adiabatic flame temperature </span>
+        <span class="n">coeff_T_ad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">phis</span><span class="p">,</span> <span class="n">T_ad</span><span class="p">,</span> <span class="n">poly_order</span><span class="p">)</span>
+        <span class="n">poly_T_ad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">coeff_T_ad</span><span class="p">)</span>
+        <span class="n">T_ad_fit</span> <span class="o">=</span> <span class="n">poly_T_ad</span><span class="p">(</span><span class="n">phis_fit</span><span class="p">)</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">phis_fit</span><span class="p">,</span> <span class="n">T_ad_fit</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+
+<span class="c1"># Turn on legends</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Fix figures layout</span>
+<span class="n">fig1</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span> 
+<span class="n">fig2</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "luukalt/data_analysis",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs\notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../../intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Luuk Altenburg<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
