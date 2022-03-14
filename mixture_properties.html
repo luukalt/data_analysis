@@ -220,8 +220,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mount-drive">
-     Mount Drive
+    <a class="reference internal nav-link" href="#read-unzip-packages-from-github-and-add-them-to-the-correct-directory-in-colab">
+     Read (unzip) packages from Github and add them to the correct directory in colab
     </a>
    </li>
   </ul>
@@ -247,13 +247,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#define-mixtures">
-       Define mixtures
+      <a class="reference internal nav-link" href="#premixed-flame-class-initialization-of-unburnt-mixtures-and-solver-of-1d-governing-equations">
+       Premixed flame class [initialization of unburnt mixtures AND solver of 1D governing equations]
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#flame-object-initialization-solve-equations">
-       Flame object [initialization + solve equations]
+      <a class="reference internal nav-link" href="#define-mixtures">
+       Define mixtures
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
@@ -269,13 +269,6 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#plots">
    Plots
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#save-figures">
-     Save figures
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -303,8 +296,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mount-drive">
-     Mount Drive
+    <a class="reference internal nav-link" href="#read-unzip-packages-from-github-and-add-them-to-the-correct-directory-in-colab">
+     Read (unzip) packages from Github and add them to the correct directory in colab
     </a>
    </li>
   </ul>
@@ -330,13 +323,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#define-mixtures">
-       Define mixtures
+      <a class="reference internal nav-link" href="#premixed-flame-class-initialization-of-unburnt-mixtures-and-solver-of-1d-governing-equations">
+       Premixed flame class [initialization of unburnt mixtures AND solver of 1D governing equations]
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#flame-object-initialization-solve-equations">
-       Flame object [initialization + solve equations]
+      <a class="reference internal nav-link" href="#define-mixtures">
+       Define mixtures
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
@@ -352,13 +345,6 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#plots">
    Plots
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#save-figures">
-     Save figures
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -371,15 +357,29 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="mixture-properties">
 <h1>Mixture properties<a class="headerlink" href="#mixture-properties" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="mount-drive">
-<h2>Mount Drive<a class="headerlink" href="#mount-drive" title="Permalink to this headline">¶</a></h2>
+<p>The notebook can be used in Google Colab (see rocket button).</p>
+<div class="section" id="read-unzip-packages-from-github-and-add-them-to-the-correct-directory-in-colab">
+<h2>Read (unzip) packages from Github and add them to the correct directory in colab<a class="headerlink" href="#read-unzip-packages-from-github-and-add-them-to-the-correct-directory-in-colab" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run this code cell when using Google colab, otherwise there is no need to run this code cell</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">!</span>wget https://github.com/luukalt/data_analysis/raw/main/cantera_env.zip <span class="p">&amp;</span>&gt; /dev/null
+<span class="o">!</span>unzip -o <span class="s2">&quot;/content/cantera_env.zip&quot;</span> -d <span class="s2">&quot;/usr/local/lib/python3.7/site-packages/&quot;</span> <span class="p">&amp;</span>&gt; /dev/null
+<span class="n">colab_package_dir</span> <span class="o">=</span> <span class="s2">&quot;/usr/local/lib/python3.7/site-packages/&quot;</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">colab_package_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="main">
 <h1>Main<a class="headerlink" href="#main" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="import-packages">
 <h2>Import packages<a class="headerlink" href="#import-packages" title="Permalink to this headline">¶</a></h2>
-<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cantera</span> <span class="k">as</span> <span class="nn">ct</span>
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -395,7 +395,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="heating-values">
 <h2>Heating values<a class="headerlink" href="#heating-values" title="Permalink to this headline">¶</a></h2>
-<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">heating_value</span><span class="p">(</span><span class="n">fuel</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Returns the LHV and HHV for the specified fuel &quot;&quot;&quot;</span>
@@ -445,28 +445,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="laminar-flame-speed">
 <h2>Laminar flame speed<a class="headerlink" href="#laminar-flame-speed" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="define-mixtures">
-<h3>Define mixtures<a class="headerlink" href="#define-mixtures" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="premixed-flame-class-initialization-of-unburnt-mixtures-and-solver-of-1d-governing-equations">
+<h3>Premixed flame class [initialization of unburnt mixtures AND solver of 1D governing equations]<a class="headerlink" href="#premixed-flame-class-initialization-of-unburnt-mixtures-and-solver-of-1d-governing-equations" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Equivalence ratios    </span>
-<span class="n">phis</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]</span> <span class="c1"># Set equivalence ratios ranging from 0.4 to 0.8</span>
-
-<span class="c1"># Hydrogen percentages by volume of fuel</span>
-<span class="n">H2_percentages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="c1"># Set hydrogen volume percentages of the fuel ranging from 0 to 100 </span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="flame-object-initialization-solve-equations">
-<h3>Flame object [initialization + solve equations]<a class="headerlink" href="#flame-object-initialization-solve-equations" title="Permalink to this headline">¶</a></h3>
-<div class="cell tag_hide-input tag_remove-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define colors to make distinction between different mixtures based on hydrogen percentage</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">H2_percentages</span><span class="p">)))</span>
-
-<span class="c1">#%% Premixed flame object</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% Premixed flame object</span>
 <span class="k">class</span> <span class="nc">premixed_flame</span><span class="p">:</span>
     
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">H2_percentage</span><span class="p">,</span> <span class="n">T_u</span><span class="o">=</span><span class="mf">293.15</span><span class="p">,</span> <span class="n">p_u</span><span class="o">=</span><span class="mi">101325</span><span class="p">):</span>
@@ -612,11 +595,28 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<div class="section" id="define-mixtures">
+<h3>Define mixtures<a class="headerlink" href="#define-mixtures" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Equivalence ratios    </span>
+<span class="n">phis</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]</span> <span class="c1"># Set equivalence ratios ranging from 0.4 to 0.8</span>
+
+<span class="c1"># Hydrogen percentages by volume of fuel</span>
+<span class="n">H2_percentages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="c1"># Set hydrogen volume percentages of the fuel ranging from 0 to 100 </span>
+
+<span class="c1"># Define colors to make distinction between different mixtures based on hydrogen percentage</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">H2_percentages</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="perform-calculations">
 <h3>Perform calculations<a class="headerlink" href="#perform-calculations" title="Permalink to this headline">¶</a></h3>
-<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize list for flame objects</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize list for premixed flame objects</span>
 <span class="n">flames</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="c1"># Create flame objects and start simulations</span>
@@ -643,7 +643,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="plots">
 <h1>Plots<a class="headerlink" href="#plots" title="Permalink to this headline">¶</a></h1>
-<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% Plots A: Laminar flame speed/adiabatic flame temperture vs equivalence ratio</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
@@ -727,18 +727,6 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">fig1</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span> 
 <span class="n">fig2</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="save-figures">
-<h2>Save figures<a class="headerlink" href="#save-figures" title="Permalink to this headline">¶</a></h2>
-<div class="cell tag_hide-input tag_remove-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path_saved_images</span> <span class="o">=</span> <span class="s2">&quot;/content/&quot;</span>
-<span class="n">fig1</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path_saved_images</span> <span class="o">+</span> <span class="s2">&quot;SL0_phi_T_u=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">T_u</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;_p_u=&quot;</span> <span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">p_u</span><span class="p">))</span><span class="o">+</span> <span class="s2">&quot;.svg&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
-<span class="n">fig2</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path_saved_images</span> <span class="o">+</span> <span class="s2">&quot;Tad_phi_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">T_u</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;_p_u=&quot;</span> <span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">p_u</span><span class="p">))</span><span class="o">+</span> <span class="s2">&quot;.svg&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
-</pre></div>
-</div>
 </div>
 </div>
 </div>
