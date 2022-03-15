@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro
+root: docs/intro
 parts:
 - caption: Experiments
   chapters:
@@ -12,4 +12,4 @@ parts:
 
 - caption: Notebooks
   chapters:
-  - file: docs/notebooks/mixture_properties
+  - file: docs/notebooks/premixed_flame_properties
