@@ -1,4 +1,4 @@
-# Experiment I:Tube burner 
+# Tube burner 
 
 Overview of the tube burner experiment.
 
