@@ -301,11 +301,13 @@ Filippo already reported the velocity fluctuations.</p>
 <table class="table" id="tab-flames-info">
 <caption><span class="caption-number">Table 1 </span><span class="caption-text">Specifications of flame 1 and 2.</span><a class="headerlink" href="#tab-flames-info" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Flame</p></th>
@@ -313,6 +315,8 @@ Filippo already reported the velocity fluctuations.</p>
 <th class="head"><p><span class="math notranslate nohighlight">\(Re_{D}\)</span> [-]</p></th>
 <th class="head"><p><span class="math notranslate nohighlight">\(\phi\)</span> [-]</p></th>
 <th class="head"><p><span class="math notranslate nohighlight">\(H_2\%\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(f\)</span> [Hz]</p></th>
+<th class="head"><p>total images [-]</p></th>
 </tr>
 </thead>
 <tbody>
@@ -321,12 +325,16 @@ Filippo already reported the velocity fluctuations.</p>
 <td><p>16139</p></td>
 <td><p>0.6</p></td>
 <td><p>100</p></td>
+<td><p>50</p></td>
+<td><p>5000</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>flame 2</strong></p></td>
 <td><p>25.7</p></td>
 <td><p>12005</p></td>
 <td><p>0.6</p></td>
 <td><p>100</p></td>
+<td><p>50</p></td>
+<td><p>5000</p></td>
 </tr>
 </tbody>
 </table>
@@ -345,7 +353,7 @@ Filippo already reported the velocity fluctuations.</p>
 <a class="reference internal" href="#flame-1-frame0-b00004"><span class="std std-numref">Fig. 3</span></a> shows an example.</p>
 <div class="figure align-default" id="flame-1-frame0-b00004">
 <a class="reference internal image-reference" href="../../../../_images/flame_1_Cam_Date=190923_Time=164708_Frame0_B00004.png"><img alt="../../../../_images/flame_1_Cam_Date=190923_Time=164708_Frame0_B00004.png" src="../../../../_images/flame_1_Cam_Date=190923_Time=164708_Frame0_B00004.png" style="width: 50%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Raw PIV image with the flame front contour as determined by the self-made algorithm (red line).</span><a class="headerlink" href="#flame-1-frame0-b00004" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Raw PIV image of flame 1 with the flame front contour as determined by the self-made algorithm (red line).</span><a class="headerlink" href="#flame-1-frame0-b00004" title="Permalink to this image">¶</a></p>
 </div>
 <p><a class="reference internal" href="#flame-1-pdf-front-5000"><span class="std std-numref">Fig. 4</span></a> and <a class="reference internal" href="#flame-2-pdf-front-5000"><span class="std std-numref">Fig. 5</span></a> show the distribution of the flame front for 5000 images.</p>
 <div class="sphinx-bs container-fluid docutils">
@@ -375,7 +383,7 @@ Filippo already reported the velocity fluctuations.</p>
 </div>
 <div class="section" id="average-flame-angle">
 <h3>Average Flame angle<a class="headerlink" href="#average-flame-angle" title="Permalink to this headline">¶</a></h3>
-<p>The PDFs shown in <a class="reference internal" href="#flame-1-pdf-front-5000"><span class="std std-numref">Fig. 4</span></a> and <a class="reference internal" href="#flame-2-pdf-front-5000"><span class="std std-numref">Fig. 5</span></a> were used to find the average flame angle. As a first step, slices of the PDF were taken at different locations in axial direction, see <a class="reference internal" href="#flame-1-pdf-front-5000-slices"><span class="std std-numref">Fig. 6</span></a> and <a class="reference internal" href="#flame-2-pdf-front-5000-slices"><span class="std std-numref">Fig. 7</span></a>. The PDF data was smoothened using a Savitzky–Golay filter with a window length of 101 and a polynomial order to of 3. It was chosen that the peaks of the filtered PDF data seen in the figures correspond to the average location of the flame front in the radial direction.</p>
+<p>The PDFs shown in <a class="reference internal" href="#flame-1-pdf-front-5000"><span class="std std-numref">Fig. 4</span></a> and <a class="reference internal" href="#flame-2-pdf-front-5000"><span class="std std-numref">Fig. 5</span></a> were used to find the average flame angle. As a first step, slices of the PDF were taken at different locations in axial direction, see <a class="reference internal" href="#flame-1-pdf-front-5000-slices"><span class="std std-numref">Fig. 6</span></a> and <a class="reference internal" href="#flame-2-pdf-front-5000-slices"><span class="std std-numref">Fig. 7</span></a>. The PDF data was smoothened using a <strong>Savitzky–Golay</strong> filter with a <strong>window length of 101</strong> and a <strong>polynomial order to of 3</strong>. It was chosen that the peaks of the filtered PDF data seen in the figures correspond to the average location of the flame front in the radial direction.</p>
 <div class="sphinx-bs container-fluid docutils">
 <div class="row docutils">
 <div class="d-flex col-xl-6 docutils">
