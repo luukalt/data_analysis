@@ -13,5 +13,5 @@ kernelspec:
 
 # Introduction
 
-Important Jupyter Notebooks and analysis of flame (flashback) data! <br>
+This site provides a summary of my PhD project. Hope you like it! <br>
 
