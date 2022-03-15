@@ -513,7 +513,6 @@ const thebe_selector_output = ".output, .cell_output"
         
         <span class="c1"># 2. Define the fuel and air composition</span>
         <span class="n">fuel</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H2&#39;</span><span class="p">:</span><span class="n">f_H2</span><span class="p">,</span> <span class="s1">&#39;CH4&#39;</span><span class="p">:</span><span class="n">f_CH4</span><span class="p">,</span> <span class="s1">&#39;C2H6&#39;</span><span class="p">:</span><span class="n">f_C2H6</span><span class="p">,</span> <span class="s1">&#39;N2&#39;</span><span class="p">:</span><span class="n">f_N2_in_DNG</span><span class="p">}</span>
-        <span class="n">fuel</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H2&#39;</span><span class="p">:</span><span class="n">f_H2</span><span class="p">,</span> <span class="s1">&#39;CH4&#39;</span><span class="p">:</span><span class="n">f_CH4</span><span class="p">}</span>
         <span class="n">air</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;N2&#39;</span><span class="p">:</span><span class="n">f_N2</span><span class="o">/</span><span class="n">f_O2</span><span class="p">,</span> <span class="s1">&#39;O2&#39;</span><span class="p">:</span><span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;AR&#39;</span><span class="p">:</span><span class="n">f_AR</span><span class="o">/</span><span class="n">f_O2</span><span class="p">}</span>   
         
         <span class="c1"># 3. Set the equivalence ratio</span>
@@ -611,7 +610,7 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="k">for</span> <span class="n">H2_percentage</span> <span class="ow">in</span> <span class="n">H2_percentages</span><span class="p">:</span>
 
       <span class="n">flame</span> <span class="o">=</span> <span class="n">premixed_flame</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span> <span class="n">H2_percentage</span><span class="p">)</span>
-      <span class="c1"># flame.solve_equations()</span>
+      <span class="n">flame</span><span class="o">.</span><span class="n">solve_equations</span><span class="p">()</span>
       <span class="n">flames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">flame</span><span class="p">)</span>
       <span class="n">T_u</span> <span class="o">=</span> <span class="n">flame</span><span class="o">.</span><span class="n">T_u</span>
       <span class="n">p_u</span> <span class="o">=</span> <span class="n">flame</span><span class="o">.</span><span class="n">p_u</span>
