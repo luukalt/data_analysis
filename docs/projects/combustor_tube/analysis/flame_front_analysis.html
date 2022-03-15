@@ -37,9 +37,12 @@
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
     <script src="../../../../_static/doctools.js"></script>
-    <script src="../../../../_static/togglebutton.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -53,8 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Mixture properties" href="../../../notebooks/mixture_properties.html" />
-    <link rel="prev" title="Experiment I:Tube burner" href="../experiment_1.html" />
+    <link rel="next" title="Experiment II:Scaled FlameSheet combustor" href="../../combustor_flamesheet_cyl/experiment_2.html" />
+    <link rel="prev" title="Flashback propensity" href="flashback_propensity.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -93,14 +96,14 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../../intro.html">
+  <a class="reference internal" href="../../../intro.html">
    Introduction
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Experiments
+  Projects
  </span>
 </p>
 <ul class="current nav bd-sidenav">
@@ -114,9 +117,48 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="flashback_propensity.html">
+     Flashback propensity
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Flame front analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../combustor_flamesheet_cyl/experiment_2.html">
+   Experiment II:Scaled FlameSheet combustor
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../combustor_flamesheet_cyl/flashback_propensity.html">
+     Flashback propensity
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../combustor_flamesheet_2d/experiment_3.html">
+   Experiment III:Quasi 2D FlameSheet combustor
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../combustor_flamesheet_2d/flashback_propensity.html">
+     Flashback propensity
     </a>
    </li>
   </ul>
@@ -129,8 +171,8 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../notebooks/mixture_properties.html">
-   Mixture properties
+  <a class="reference internal" href="../../../notebooks/premixed_flame_properties.html">
+   Premixed flame properties
   </a>
  </li>
 </ul>
@@ -170,7 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../../_sources/docs/experiments/combustor_tube/analysis/flame_front_analysis.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../../../_sources/docs/projects/combustor_tube/analysis/flame_front_analysis.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -228,6 +270,11 @@ const thebe_selector_output = ".output, .cell_output"
      Distribution of flame front contours
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#average-flame-angle">
+     Average Flame angle
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -265,6 +312,11 @@ const thebe_selector_output = ".output, .cell_output"
      Distribution of flame front contours
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#average-flame-angle">
+     Average Flame angle
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -288,11 +340,14 @@ Filippo already reported the velocity fluctuations.</p>
 <table class="table" id="tab-flames-info">
 <caption><span class="caption-number">Table 1 </span><span class="caption-text">Specifications of flame 1 and 2.</span><a class="headerlink" href="#tab-flames-info" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Flame</p></th>
@@ -300,6 +355,9 @@ Filippo already reported the velocity fluctuations.</p>
 <th class="head"><p><span class="math notranslate nohighlight">\(Re_{D}\)</span> [-]</p></th>
 <th class="head"><p><span class="math notranslate nohighlight">\(\phi\)</span> [-]</p></th>
 <th class="head"><p><span class="math notranslate nohighlight">\(H_2\%\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(f\)</span> [Hz]</p></th>
+<th class="head"><p>images # [-]</p></th>
+<th class="head"><p>resolution</p></th>
 </tr>
 </thead>
 <tbody>
@@ -308,12 +366,18 @@ Filippo already reported the velocity fluctuations.</p>
 <td><p>16139</p></td>
 <td><p>0.6</p></td>
 <td><p>100</p></td>
+<td><p>50</p></td>
+<td><p>5000</p></td>
+<td><p>1024x1024</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>flame 2</strong></p></td>
 <td><p>25.7</p></td>
 <td><p>12005</p></td>
 <td><p>0.6</p></td>
 <td><p>100</p></td>
+<td><p>50</p></td>
+<td><p>5000</p></td>
+<td><p>1024x1024</p></td>
 </tr>
 </tbody>
 </table>
@@ -331,8 +395,8 @@ Filippo already reported the velocity fluctuations.</p>
 <p>The flame front of the raw PIV images was detected using a self-made algorithm using Gaussian filters, enhancement of the images and eventually a binarization of the image.
 <a class="reference internal" href="#flame-1-frame0-b00004"><span class="std std-numref">Fig. 3</span></a> shows an example.</p>
 <div class="figure align-default" id="flame-1-frame0-b00004">
-<a class="reference internal image-reference" href="../../../../_images/B00004.png"><img alt="../../../../_images/B00004.png" src="../../../../_images/B00004.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Raw PIV image with the flame front contour as determined by the self-made algorithm (red line).</span><a class="headerlink" href="#flame-1-frame0-b00004" title="Permalink to this image">¶</a></p>
+<a class="reference internal image-reference" href="../../../../_images/flame_1_Cam_Date=190923_Time=164708_Frame0_B00004.png"><img alt="../../../../_images/flame_1_Cam_Date=190923_Time=164708_Frame0_B00004.png" src="../../../../_images/flame_1_Cam_Date=190923_Time=164708_Frame0_B00004.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Raw PIV image of flame 1 with the flame front contour as determined by the self-made algorithm (red line).</span><a class="headerlink" href="#flame-1-frame0-b00004" title="Permalink to this image">¶</a></p>
 </div>
 <p><a class="reference internal" href="#flame-1-pdf-front-5000"><span class="std std-numref">Fig. 4</span></a> and <a class="reference internal" href="#flame-2-pdf-front-5000"><span class="std std-numref">Fig. 5</span></a> show the distribution of the flame front for 5000 images.</p>
 <div class="sphinx-bs container-fluid docutils">
@@ -360,6 +424,59 @@ Filippo already reported the velocity fluctuations.</p>
 </div>
 </div>
 </div>
+<div class="section" id="average-flame-angle">
+<h3>Average Flame angle<a class="headerlink" href="#average-flame-angle" title="Permalink to this headline">¶</a></h3>
+<p>The PDFs shown in <a class="reference internal" href="#flame-1-pdf-front-5000"><span class="std std-numref">Fig. 4</span></a> and <a class="reference internal" href="#flame-2-pdf-front-5000"><span class="std std-numref">Fig. 5</span></a> were used to find the average flame angle. As a first step, slices of the PDF were taken at different locations in axial direction, see <a class="reference internal" href="#flame-1-pdf-front-5000-slices"><span class="std std-numref">Fig. 6</span></a> and <a class="reference internal" href="#flame-2-pdf-front-5000-slices"><span class="std std-numref">Fig. 7</span></a>. The PDF data was smoothened using a <strong>Savitzky–Golay</strong> filter with a <strong>window length of 101 pixels</strong> and a <strong>polynomial order to of 3</strong>. It was chosen that the peaks of the filtered PDF data seen in the figures correspond to the average location of the flame front in the radial direction.</p>
+<div class="sphinx-bs container-fluid docutils">
+<div class="row docutils">
+<div class="d-flex col-xl-6 docutils">
+<div class="card w-100 shadow-none border-0 docutils">
+<div class="card-body docutils">
+<div class="figure align-default" id="flame-1-pdf-front-5000-slices">
+<a class="reference internal image-reference" href="../../../../_images/flame_1_pdf_front_5000_slices.png"><img alt="../../../../_images/flame_1_pdf_front_5000_slices.png" src="../../../../_images/flame_1_pdf_front_5000_slices.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">PDF of flame front contours of flame 1 at different locations in axial direction.</span><a class="headerlink" href="#flame-1-pdf-front-5000-slices" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="d-flex col-xl-6 docutils">
+<div class="card w-100 shadow-none border-0 docutils">
+<div class="card-body docutils">
+<div class="figure align-default" id="flame-2-pdf-front-5000-slices">
+<a class="reference internal image-reference" href="../../../../_images/flame_2_pdf_front_5000_slices.png"><img alt="../../../../_images/flame_2_pdf_front_5000_slices.png" src="../../../../_images/flame_2_pdf_front_5000_slices.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">PDF of flame front contours of flame 2 at different locations in axial direction.</span><a class="headerlink" href="#flame-2-pdf-front-5000-slices" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Finally the average flame angle could be determined using a linear fit trhough the extracted average flame front locations, see <a class="reference internal" href="#flame-1-pdf-front-5000-angle"><span class="std std-numref">Fig. 8</span></a> and <a class="reference internal" href="#flame-2-pdf-front-5000-angle"><span class="std std-numref">Fig. 9</span></a></p>
+<div class="sphinx-bs container-fluid docutils">
+<div class="row docutils">
+<div class="d-flex col-xl-6 docutils">
+<div class="card w-100 shadow-none border-0 docutils">
+<div class="card-body docutils">
+<div class="figure align-default" id="flame-1-pdf-front-5000-angle">
+<a class="reference internal image-reference" href="../../../../_images/flame_1_pdf_front_5000_angle.png"><img alt="../../../../_images/flame_1_pdf_front_5000_angle.png" src="../../../../_images/flame_1_pdf_front_5000_angle.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Average flame front and corresponding angle of flame 1.</span><a class="headerlink" href="#flame-1-pdf-front-5000-angle" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="d-flex col-xl-6 docutils">
+<div class="card w-100 shadow-none border-0 docutils">
+<div class="card-body docutils">
+<div class="figure align-default" id="flame-2-pdf-front-5000-angle">
+<a class="reference internal image-reference" href="../../../../_images/flame_2_pdf_front_5000_angle.png"><img alt="../../../../_images/flame_2_pdf_front_5000_angle.png" src="../../../../_images/flame_2_pdf_front_5000_angle.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Average flame front and corresponding angle of flame 2.</span><a class="headerlink" href="#flame-2-pdf-front-5000-angle" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -376,7 +493,7 @@ Filippo already reported the velocity fluctuations.</p>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./docs\experiments\combustor_tube\analysis"
+            path: "./docs/projects/combustor_tube/analysis"
         },
         predefinedOutput: true
     }
@@ -388,17 +505,17 @@ Filippo already reported the velocity fluctuations.</p>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../experiment_1.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="flashback_propensity.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Experiment I:Tube burner</p>
+            <p class="prev-next-title">Flashback propensity</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../../../notebooks/mixture_properties.html" title="next page">
+    <a class='right-next' id="next-link" href="../../combustor_flamesheet_cyl/experiment_2.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Mixture properties</p>
+        <p class="prev-next-title">Experiment II:Scaled FlameSheet combustor</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
