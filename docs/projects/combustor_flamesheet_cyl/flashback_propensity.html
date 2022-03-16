@@ -286,6 +286,23 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#flashback-propensity-map">
+   Flashback propensity map
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#read-flashback-data">
+     Read flashback data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#flasback-map">
+     Flasback map
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#flashback-videos-steel-liner">
    Flashback videos - Steel liner
   </a>
@@ -571,6 +588,23 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#flashback-propensity-map">
+   Flashback propensity map
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#read-flashback-data">
+     Read flashback data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#flasback-map">
+     Flasback map
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#flashback-videos-steel-liner">
    Flashback videos - Steel liner
   </a>
@@ -846,6 +880,341 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="flashback-propensity">
 <h1>Flashback propensity<a class="headerlink" href="#flashback-propensity" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="flashback-propensity-map">
+<h2>Flashback propensity map<a class="headerlink" href="#flashback-propensity-map" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="read-flashback-data">
+<h3>Read flashback data<a class="headerlink" href="#read-flashback-data" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Patch</span>
+<span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1">#%% START</span>
+
+<span class="c1"># Close all windows</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+
+<span class="c1">#%% COLUMN INDICES OF DATA FILE</span>
+<span class="n">index_time</span> <span class="o">=</span> <span class="mi">0</span>          <span class="c1"># 0. 	Time [hh:mm:ss.xxx]</span>
+<span class="n">index_T_u</span> <span class="o">=</span> <span class="mi">1</span>           <span class="c1"># 1. 	Ambient Temperature T_u [K]</span>
+<span class="n">index_p_u</span> <span class="o">=</span> <span class="mi">2</span>           <span class="c1"># 2. 	Ambient Pressure p_u [Pa]</span>
+<span class="n">index_f_H2_set</span> <span class="o">=</span> <span class="mi">3</span>      <span class="c1"># 3.	Volume fraction of hydrogen of total fuel [-]</span>
+<span class="n">index_f_CH4DNG_set</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># 4. 	Volume fraction of methane in DNG [-]</span>
+<span class="n">index_f_C2H6DNG_set</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># 5. 	Volume fraction of ethane in DNG [-]</span>
+<span class="n">index_f_N2DNG_set</span> <span class="o">=</span> <span class="mi">6</span>   <span class="c1"># 6. 	Volume fraction of nitrogen in DNG [-]</span>
+<span class="n">index_D1</span> <span class="o">=</span> <span class="mi">7</span>            <span class="c1"># 7. 	D1 [mm]</span>
+<span class="n">index_D2</span> <span class="o">=</span> <span class="mi">8</span>            <span class="c1"># 8. 	D2 [mm]</span>
+<span class="n">index_H_liner</span> <span class="o">=</span> <span class="mi">9</span>       <span class="c1"># 9. 	H_liner [mm]</span>
+<span class="n">index_phi_set</span> <span class="o">=</span> <span class="mi">10</span>      <span class="c1"># 10.	Set equivalence ratio [-]</span>
+<span class="n">index_u_u_set</span> <span class="o">=</span> <span class="mi">11</span>      <span class="c1"># 11.	Set velocity u1 [m/s]	</span>
+<span class="n">index_phi_meas</span> <span class="o">=</span> <span class="mi">12</span>     <span class="c1"># 12.	Measured equivalence ratio [-]</span>
+<span class="n">index_u_u_meas</span> <span class="o">=</span> <span class="mi">13</span>     <span class="c1"># 13.	Measured velocity u1 [m/s]</span>
+<span class="n">index_f_H2_meas</span> <span class="o">=</span> <span class="mi">14</span>     <span class="c1"># 14.	Measured volume fraction of hydrogen</span>
+<span class="n">index_Q_air1_nL_per_min_meas</span> <span class="o">=</span> <span class="mi">15</span>   <span class="c1"># 15. 	Measured Air flow 1 [ln/min]</span>
+<span class="n">index_Q_air2_nL_per_min_meas</span>  <span class="o">=</span> <span class="mi">16</span>  <span class="c1"># 16. 	Measured Air flow 2 [ln/min]</span>
+<span class="n">index_Q_DNG_nL_per_min_meas</span>  <span class="o">=</span> <span class="mi">17</span>   <span class="c1"># 17. 	Measured DNG flow [ln/min]</span>
+<span class="n">index_Q_H2_nL_per_min_meas</span>  <span class="o">=</span> <span class="mi">18</span>    <span class="c1"># 18. 	Measured Hydrogen flow [ln/min]</span>
+<span class="n">index_m_mix_dot_meas</span>  <span class="o">=</span> <span class="mi">19</span>          <span class="c1"># 19.	Measured total mass flow of unburnt mixture [kg/s]</span>
+<span class="n">index_m_air1_dot_meas</span> <span class="o">=</span> <span class="mi">20</span>          <span class="c1"># 20.	Measured air mass flow of unburnt mixture [kg/s]</span>
+<span class="n">index_m_fuel_dot_meas</span> <span class="o">=</span> <span class="mi">21</span>          <span class="c1"># 21.	Measured fuel mass flow of unburnt mixture [kg/s]</span>
+<span class="n">index_P_thermal_meas</span> <span class="o">=</span> <span class="mi">22</span>           <span class="c1"># 22.	Measured thermal power output</span>
+<span class="n">index_rho_mix_meas</span> <span class="o">=</span> <span class="mi">23</span>             <span class="c1"># 23.	Measured density of unburnt mixture [kg/m^3]</span>
+<span class="n">index_LHV_H2</span><span class="o">=</span> <span class="mi">24</span>                    <span class="c1"># 24.	LHV hydrogen [MW]</span>
+<span class="n">index_LHV_CH4</span> <span class="o">=</span> <span class="mi">25</span>                  <span class="c1"># 25.	LHV methane [MW]</span>
+<span class="n">index_LHV_C2H6</span> <span class="o">=</span> <span class="mi">26</span>                 <span class="c1"># 26. 	LHV ethane [MW]</span>
+
+<span class="n">variables_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;T_u_ambient&#39;</span><span class="p">,</span> <span class="s1">&#39;p_u_ambient&#39;</span><span class="p">,</span> <span class="s1">&#39;x_H2_set&#39;</span><span class="p">,</span> <span class="s1">&#39;x_CH4_set&#39;</span><span class="p">,</span> <span class="s1">&#39;x_C2H6_set&#39;</span><span class="p">,</span> <span class="s1">&#39;x_N2_set&#39;</span><span class="p">,</span> <span class="s1">&#39;D_inner_set&#39;</span><span class="p">,</span> <span class="s1">&#39;D_outer_set&#39;</span><span class="p">,</span> <span class="s1">&#39;H_liner_meas&#39;</span><span class="p">,</span> <span class="s1">&#39;phi_set&#39;</span><span class="p">,</span> <span class="s1">&#39;u_u_set&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;phi_meas&#39;</span><span class="p">,</span> <span class="s1">&#39;u_u_meas&#39;</span><span class="p">,</span> <span class="s1">&#39;x_H2_meas&#39;</span><span class="p">,</span> <span class="s1">&#39;Q_a1_meas&#39;</span><span class="p">,</span> <span class="s1">&#39;Q_a2_meas&#39;</span><span class="p">,</span> <span class="s1">&#39;Q_DNG_meas&#39;</span><span class="p">,</span> <span class="s1">&#39;Q_H2_meas&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;m_mix_dot_meas&#39;</span><span class="p">,</span> <span class="s1">&#39;m_a_dot_meas&#39;</span><span class="p">,</span> <span class="s1">&#39;m_f_dot_meas&#39;</span><span class="p">,</span> <span class="s1">&#39;power_meas&#39;</span><span class="p">,</span> <span class="s1">&#39;rho_u_meas&#39;</span><span class="p">,</span> <span class="s1">&#39;LHV_H2&#39;</span><span class="p">,</span> <span class="s1">&#39;LHV_CH4&#39;</span><span class="p">,</span> <span class="s1">&#39;LHV_C2H6&#39;</span><span class="p">]</span>
+        
+
+<span class="c1"># Important indices regarding flashback</span>
+<span class="n">index_u_u_design</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">index_u_u_first_sign_FB</span> <span class="o">=</span> <span class="mi">1</span> 
+<span class="n">index_u_u_FB</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">index_data</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="c1">#%% CONSTANTS</span>
+<span class="c1"># T_STP = 273.15 K (= 0 C)</span>
+<span class="c1"># p_STP = 101325 Pa</span>
+<span class="c1"># R = 8.314 Pa*m^3/(K*mol)</span>
+
+<span class="c1">#%% FORMULAS LABVIEW CONTROL PANEL</span>
+<span class="c1"># Standard conditions correction:</span>
+<span class="c1"># STP = (T_u/T_STP)*(p_STP/p_u)</span>
+
+<span class="c1"># Molar volume:</span>
+<span class="c1"># V_m = V/n = R*T_u/p_u</span>
+
+<span class="c1">#%% LIBRARY OF EXPERIMENTAL DATA</span>
+
+<span class="c1"># Initialize data library</span>
+<span class="n">flashback_data</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="c1">#  Dictionary with four keys: </span>
+<span class="c1"># - key1: hydrogen content</span>
+<span class="c1"># - key2: phi</span>
+<span class="c1"># - key3: test nr</span>
+<span class="c1"># - key4: date</span>
+<span class="c1">#</span>
+<span class="c1"># and 3 values:</span>
+<span class="c1"># - value1 = frame index design point</span>
+<span class="c1"># - value2 = frame index first sign of flashback point</span>
+<span class="c1"># - value3 = frame index flashback point</span>
+
+<span class="n">flashback_data_quartz</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="c1">#  Dictionary with four keys: </span>
+<span class="c1"># - key1: hydrogen content</span>
+<span class="c1"># - key2: phi</span>
+<span class="c1"># - key3: test nr</span>
+<span class="c1"># - key4: date</span>
+<span class="c1">#</span>
+<span class="c1"># and 3 values:</span>
+<span class="c1"># - value1 = frame index flashback point</span>
+<span class="c1"># - value2 = flashback velocity in m.s^-1</span>
+
+<span class="c1"># Fill library with experimental data</span>
+
+<span class="c1">############ Steel liner set 1 ############</span>
+<span class="c1"># H0</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.60</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">285</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span>  <span class="mi">475</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.70</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-28&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">935</span> <span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">3670</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.70</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">431</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1495</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.80</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-28&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">242</span><span class="p">,</span> <span class="mi">890</span><span class="p">,</span> <span class="mi">2037</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.80</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">320</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1068</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-28&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">540</span><span class="p">,</span> <span class="mi">1050</span><span class="p">,</span> <span class="mi">2510</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">170</span><span class="p">,</span> <span class="mi">447</span><span class="p">,</span> <span class="mi">1175</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-28&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">660</span><span class="p">,</span> <span class="mi">965</span><span class="p">,</span> <span class="mi">1615</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">420</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1394</span><span class="p">]</span>
+
+<span class="c1"># H25</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">25</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-29&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">280</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">25</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">372</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">25</span><span class="p">,</span> <span class="mf">0.60</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-29&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">372</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1092</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">25</span><span class="p">,</span> <span class="mf">0.60</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">205</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1321</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">25</span><span class="p">,</span> <span class="mf">0.70</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-29&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">340</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">642</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">25</span><span class="p">,</span> <span class="mf">0.70</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">240</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">464</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">25</span><span class="p">,</span> <span class="mf">0.80</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-29&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">445</span><span class="p">,</span> <span class="mi">1167</span><span class="p">,</span> <span class="mi">1427</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">25</span><span class="p">,</span> <span class="mf">0.80</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">230</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">595</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">25</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-29&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">770</span><span class="p">,</span> <span class="mi">1442</span><span class="p">,</span> <span class="mi">2179</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">25</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">327</span><span class="p">,</span> <span class="mi">770</span><span class="p">,</span> <span class="mi">1499</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">25</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-29&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">669</span><span class="p">,</span> <span class="mi">1560</span><span class="p">,</span> <span class="mi">2408</span><span class="p">]</span>
+
+<span class="c1"># H50</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">50</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-28&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">585</span><span class="p">,</span> <span class="mi">815</span><span class="p">,</span> <span class="mi">1425</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">50</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">600</span><span class="p">,</span> <span class="mi">1210</span><span class="p">,</span> <span class="mi">1610</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">50</span><span class="p">,</span> <span class="mf">0.60</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-29&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">760</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1402</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">50</span><span class="p">,</span> <span class="mf">0.60</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">510</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">957</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">50</span><span class="p">,</span> <span class="mf">0.70</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-28&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">358</span><span class="p">,</span> <span class="mi">1340</span><span class="p">,</span> <span class="mi">2036</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">50</span><span class="p">,</span> <span class="mf">0.70</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">280</span><span class="p">,</span> <span class="mi">1025</span><span class="p">,</span> <span class="mi">1432</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">50</span><span class="p">,</span> <span class="mf">0.80</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-29&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">470</span><span class="p">,</span> <span class="mi">1911</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">50</span><span class="p">,</span> <span class="mf">0.80</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">525</span><span class="p">,</span> <span class="mi">1001</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">50</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-28&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">290</span><span class="p">,</span> <span class="mi">1260</span><span class="p">,</span> <span class="mi">2805</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">50</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">360</span><span class="p">,</span> <span class="mi">720</span><span class="p">,</span> <span class="mi">1485</span><span class="p">]</span>
+
+<span class="c1"># H75</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">75</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-29&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1770</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">2025</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">75</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">819</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1305</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">75</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;2020-07-31&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">562</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">951</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">75</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-29&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1600</span><span class="p">,</span> <span class="mi">2222</span><span class="p">,</span> <span class="mi">2640</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">75</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">977</span><span class="p">,</span> <span class="mi">1560</span><span class="p">,</span> <span class="mi">1697</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">75</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;2020-07-31&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">369</span><span class="p">,</span> <span class="mi">730</span><span class="p">,</span> <span class="mi">1136</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">75</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-29&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">474</span><span class="p">,</span> <span class="mi">1139</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">75</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">95</span><span class="p">,</span> <span class="mi">798</span><span class="p">,</span> <span class="mi">1355</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">75</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;2020-07-31&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">788</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">75</span><span class="p">,</span> <span class="mf">0.60</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-29&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">1110</span><span class="p">,</span> <span class="mi">2405</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">75</span><span class="p">,</span> <span class="mf">0.60</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="mi">1253</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">75</span><span class="p">,</span> <span class="mf">0.60</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;2020-07-31&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">435</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">75</span><span class="p">,</span> <span class="mf">0.70</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-29&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">82</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">75</span><span class="p">,</span> <span class="mf">0.70</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-29&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">101</span><span class="p">]</span>
+
+<span class="c1"># H100</span>
+<span class="c1"># flashback_data[(&#39;H100&#39;, &#39;0.30&#39;, &#39;1&#39;, &#39;2020-07-28&#39;)] = [None, None, 3198]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">0.30</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-28&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">700</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">0.30</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">762</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">0.30</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;2020-07-31&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1230</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-29&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1385</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">520</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;2020-07-31&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1188</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-28&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">2309</span><span class="p">,</span> <span class="mi">2786</span><span class="p">]</span> 
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">2003</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;2020-07-30&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">530</span><span class="p">,</span> <span class="mi">1015</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;2020-07-31&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1236</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-07-28&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">896</span><span class="p">,</span> <span class="mi">99</span><span class="p">]</span>
+<span class="n">flashback_data</span><span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;2020-07-28&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1942</span><span class="p">,</span> <span class="mi">99</span><span class="p">]</span>
+
+<span class="c1">############ Quartz liner set 1 ############</span>
+
+<span class="c1"># H50</span>
+<span class="n">flashback_data_quartz</span><span class="p">[(</span><span class="mi">50</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-12-08&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">14085</span><span class="p">,</span> <span class="mf">0.996</span><span class="p">]</span>
+<span class="n">flashback_data_quartz</span><span class="p">[(</span><span class="mi">50</span><span class="p">,</span> <span class="mf">0.60</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-12-08&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7415</span><span class="p">,</span> <span class="mf">1.982</span><span class="p">]</span>
+<span class="n">flashback_data_quartz</span><span class="p">[(</span><span class="mi">50</span><span class="p">,</span> <span class="mf">0.70</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="s1">&#39;2020-12-08&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6712</span><span class="p">,</span> <span class="mf">2.931</span><span class="p">]</span>
+<span class="n">flashback_data_quartz</span><span class="p">[(</span><span class="mi">50</span><span class="p">,</span> <span class="mf">0.80</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-12-08&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10434</span><span class="p">,</span> <span class="mf">3.947</span><span class="p">]</span>
+<span class="n">flashback_data_quartz</span><span class="p">[(</span><span class="mi">50</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-12-08&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12708</span><span class="p">,</span> <span class="mf">4.554</span><span class="p">]</span>
+
+<span class="c1"># H75</span>
+<span class="n">flashback_data_quartz</span><span class="p">[(</span><span class="mi">75</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2020-12-08&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12461</span><span class="p">,</span> <span class="mf">2.701</span><span class="p">]</span>
+<span class="n">flashback_data_quartz</span><span class="p">[(</span><span class="mi">75</span><span class="p">,</span> <span class="mf">0.60</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;2020-12-08&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">13777</span><span class="p">,</span> <span class="mf">4.998</span><span class="p">]</span>
+
+<span class="c1"># H100</span>
+<span class="c1"># flashback_data_quartz[(100, 0.30, 2, &#39;2020-12-09&#39;)] = [12483]</span>
+<span class="c1"># flashback_data_quartz[(100, 0.35, 1, &#39;2020-12-09&#39;)] = [10055]</span>
+<span class="c1"># flashback_data_quartz[(100, 0.40, 1, &#39;2020-12-09&#39;)] = [6552]</span>
+
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">flashback_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    
+    <span class="n">hydrogen_percentage</span> <span class="o">=</span> <span class="n">key</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">key</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">test_nr</span> <span class="o">=</span> <span class="n">key</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">date</span> <span class="o">=</span> <span class="n">key</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+    
+    <span class="c1"># Directory of data</span>
+    <span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;data/session_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> 
+    
+    <span class="c1"># A: File name of all data (except temperature)</span>
+    <span class="n">filename_A</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">+</span> <span class="s1">&#39;H&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">hydrogen_percentage</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_phi=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_u1=x_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_test&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">test_nr</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.txt&#39;</span>
+    
+    <span class="c1"># Read data of experiment</span>
+    <span class="n">data_A</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename_A</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">flashback_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1990</span><span class="o">/</span><span class="mf">1924720766.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Patch</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1">#%% START</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="flasback-map">
+<h3>Flasback map<a class="headerlink" href="#flasback-map" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% RESULTS: PLOT CONFIGURATION</span>
+<span class="c1"># Import packages</span>
+<span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
+
+<span class="c1"># Color palette</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">viridis</span>
+
+<span class="c1"># Use Latex font in plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="s2">&quot;text.usetex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;font.family&quot;</span><span class="p">:</span> <span class="s2">&quot;serif&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;font.serif&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Computer Modern Roman&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mf">14.0</span><span class="p">})</span>
+
+<span class="c1"># Define hydrogen percentages</span>
+<span class="n">H2_percentages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+
+<span class="c1"># Color for hydrogen content in plot</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">H2_percentages</span><span class="p">)))</span>
+
+<span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;H2% = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">H2_percentages</span><span class="p">)</span>
+
+<span class="c1"># Marker specification</span>
+<span class="n">fill_style_steel</span> <span class="o">=</span> <span class="s1">&#39;full&#39;</span>
+<span class="n">fill_style_quartz</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span>
+
+<span class="c1">#%% RESULTS: FLASHBACK PROPENSITY MAP FOR VARYING HYDROGEN CONTENT AND PHI at FB</span>
+<span class="n">fig1</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">flashback_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    
+    <span class="n">phi_FB</span> <span class="o">=</span> <span class="n">flashback_data</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">index_data</span><span class="p">][</span><span class="n">index_phi_meas</span><span class="p">][</span><span class="n">value</span><span class="p">[</span><span class="n">index_u_u_FB</span><span class="p">]]</span>
+    <span class="n">u_u_FB</span> <span class="o">=</span> <span class="n">flashback_data</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">index_data</span><span class="p">][</span><span class="n">index_u_u_meas</span><span class="p">][</span><span class="n">value</span><span class="p">[</span><span class="n">index_u_u_FB</span><span class="p">]]</span>
+        
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">phi_FB</span><span class="p">,</span> <span class="n">u_u_FB</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">marker_color</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label_text</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;None&quot;</span><span class="p">)</span>
+
+    <span class="c1"># ax1.plot(phi_FB, u_u_FB, color=marker_color, marker=&#39;o&#39;, linestyle=&quot;None&quot;)</span>
+    
+    
+<span class="c1"># for key, value in flashback_data_quartz.items():</span>
+    
+<span class="c1">#     if key[0] == &#39;H0&#39;:</span>
+<span class="c1">#         label_added = label_added_H0_quartz</span>
+<span class="c1">#         marker_color = H0_color</span>
+<span class="c1">#         label_text = H0_quartz_label</span>
+<span class="c1">#     elif key[0] == &#39;H25&#39;:</span>
+<span class="c1">#         label_added = label_added_H25_quartz</span>
+<span class="c1">#         marker_color = H25_color</span>
+<span class="c1">#         label_text = H25_quartz_label</span>
+<span class="c1">#     elif key[0] == &#39;H50&#39;:</span>
+<span class="c1">#         label_added = label_added_H50_quartz</span>
+<span class="c1">#         marker_color = H50_color</span>
+<span class="c1">#         label_text = H50_quartz_label</span>
+<span class="c1">#     elif key[0] == &#39;H75&#39;:</span>
+<span class="c1">#         label_added = label_added_H75_quartz</span>
+<span class="c1">#         marker_color = H75_color</span>
+<span class="c1">#         label_text = H75_quartz_label</span>
+<span class="c1">#     elif key[0] == &#39;H100&#39;:</span>
+<span class="c1">#         label_added = label_added_H100_quartz</span>
+<span class="c1">#         marker_color = H100_color</span>
+<span class="c1">#         label_text = H100_quartz_label</span>
+
+<span class="c1">#     phi_FB = value[1]</span>
+<span class="c1">#     u_u_FB = value[2]</span>
+    
+<span class="c1">#     if not label_added: </span>
+<span class="c1">#         plt.plot(phi_FB, u_u_FB, color=marker_color, marker=&#39;o&#39;, fillstyle=fill_style_quartz, label=label_text, linestyle=&quot;None&quot;)</span>
+<span class="c1">#         if key[0] == &#39;H0&#39;:</span>
+<span class="c1">#             label_added_H0_quartz = True</span>
+<span class="c1">#         elif key[0] == &#39;H25&#39;:</span>
+<span class="c1">#             label_added_H25_quartz = True</span>
+<span class="c1">#         elif key[0] == &#39;H50&#39;:</span>
+<span class="c1">#             label_added_H50_quartz = True</span>
+<span class="c1">#         elif key[0] == &#39;H75&#39;:</span>
+<span class="c1">#             label_added_H75_quartz = True</span>
+<span class="c1">#         elif key[0] == &#39;H100&#39;:</span>
+<span class="c1">#             label_added_H100_quartz = True</span>
+<span class="c1">#     else:</span>
+<span class="c1">#         ax1.plot(phi_FB, u_u_FB, color=marker_color, marker=&#39;o&#39;, fillstyle=fill_style_quartz, linestyle=&quot;None&quot;)</span>
+    
+    <span class="n">ax1</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$\phi$ [-]&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$u_{u,</span><span class="si">{FB}</span><span class="s1">}$ [m/s]&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">9.00</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#666666&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="c1">#plt.title(&#39;Figure &#39; + str(fig_nr) + &#39;: &#39; + &#39;Flashback propensity map for multiple mixtures&#39;)</span>
+  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">\luukalt\phd\docs\projects\combustor_flamesheet_cyl\flashback_propensity.ipynb Cell 6&#39;</span> in <span class="ni">&lt;cell line: 9&gt;</span><span class="nt">()</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://github/luukalt/phd/docs/projects/combustor_flamesheet_cyl/flashback_propensity.ipynb#ch0000047vscode-vfs?line=5&#39;</span><span class="o">&gt;</span><span class="mi">6</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">viridis</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://github/luukalt/phd/docs/projects/combustor_flamesheet_cyl/flashback_propensity.ipynb#ch0000047vscode-vfs?line=7&#39;</span><span class="o">&gt;</span><span class="mi">8</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="c1"># Use Latex font in plots</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://github/luukalt/phd/docs/projects/combustor_flamesheet_cyl/flashback_propensity.ipynb#ch0000047vscode-vfs?line=8&#39;</span><span class="o">&gt;</span><span class="mi">9</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://github/luukalt/phd/docs/projects/combustor_flamesheet_cyl/flashback_propensity.ipynb#ch0000047vscode-vfs?line=9&#39;</span><span class="o">&gt;</span><span class="mi">10</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="s2">&quot;text.usetex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://github/luukalt/phd/docs/projects/combustor_flamesheet_cyl/flashback_propensity.ipynb#ch0000047vscode-vfs?line=10&#39;</span><span class="o">&gt;</span><span class="mi">11</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="s2">&quot;font.family&quot;</span><span class="p">:</span> <span class="s2">&quot;serif&quot;</span><span class="p">,</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://github/luukalt/phd/docs/projects/combustor_flamesheet_cyl/flashback_propensity.ipynb#ch0000047vscode-vfs?line=11&#39;</span><span class="o">&gt;</span><span class="mi">12</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="s2">&quot;font.serif&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Computer Modern Roman&quot;</span><span class="p">],</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://github/luukalt/phd/docs/projects/combustor_flamesheet_cyl/flashback_propensity.ipynb#ch0000047vscode-vfs?line=12&#39;</span><span class="o">&gt;</span><span class="mi">13</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mf">14.0</span><span class="p">})</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://github/luukalt/phd/docs/projects/combustor_flamesheet_cyl/flashback_propensity.ipynb#ch0000047vscode-vfs?line=14&#39;</span><span class="o">&gt;</span><span class="mi">15</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="c1"># Define hydrogen percentages</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://github/luukalt/phd/docs/projects/combustor_flamesheet_cyl/flashback_propensity.ipynb#ch0000047vscode-vfs?line=15&#39;</span><span class="o">&gt;</span><span class="mi">16</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">H2_percentages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;plt&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="flashback-videos-steel-liner">
 <h2>Flashback videos - Steel liner<a class="headerlink" href="#flashback-videos-steel-liner" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="h-2-0">
@@ -859,17 +1228,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="600"
-    height="400"
-    src="https://www.youtube.com/embed/q3qBS7BRSQA"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
 </div>
 </div>
 <div class="section" id="h-2-0-phi-0-7-test-1">
@@ -881,17 +1239,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="600"
-    height="400"
-    src="https://www.youtube.com/embed/bNPi9mI3vuU"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
 </div>
 </div>
 <div class="section" id="h-2-0-phi-0-7-test-2">
@@ -903,17 +1250,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="600"
-    height="400"
-    src="https://www.youtube.com/embed/o6xXOpnBUIg"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
 </div>
 </div>
 <div class="section" id="h-2-0-phi-0-8-test-1">
@@ -925,17 +1261,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="600"
-    height="400"
-    src="https://www.youtube.com/embed/MpG-3bEonRo"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
 </div>
 </div>
 <div class="section" id="h-2-0-phi-0-8-test-2">
@@ -947,17 +1272,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="600"
-    height="400"
-    src="https://www.youtube.com/embed/AktOH5yl4BM"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
 </div>
 </div>
 <div class="section" id="h-2-0-phi-0-9-test-1">
@@ -969,17 +1283,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="600"
-    height="400"
-    src="https://www.youtube.com/embed/s9oxonSV3jg"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
 </div>
 </div>
 <div class="section" id="h-2-0-phi-0-9-test-2">
@@ -991,17 +1294,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="600"
-    height="400"
-    src="https://www.youtube.com/embed/1tu5z1fIZkc"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
 </div>
 </div>
 <div class="section" id="h-2-0-phi-1-0-test-1">
@@ -1013,17 +1305,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="600"
-    height="400"
-    src="https://www.youtube.com/embed/TBOq83LwvVg"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
 </div>
 </div>
 <div class="section" id="h-2-0-phi-1-0-test-2">
@@ -1035,17 +1316,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="600"
-    height="400"
-    src="https://www.youtube.com/embed/2J1lYJlzZA4"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
 </div>
 </div>
 </div>
@@ -1060,17 +1330,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="600"
-    height="400"
-    src="https://www.youtube.com/embed/HWf9_6rEy34"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
 </div>
 </div>
 <div class="section" id="h-2-25-phi-0-5-test-2">
@@ -1082,17 +1341,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="600"
-    height="400"
-    src="https://www.youtube.com/embed/IjeVxPprx2o"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
 </div>
 </div>
 <div class="section" id="h-2-25-phi-0-6-test-1">
@@ -1104,17 +1352,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="600"
-    height="400"
-    src="https://www.youtube.com/embed/Hg_Ak2wlmkg"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
 </div>
 </div>
 <div class="section" id="h-2-25-phi-0-6-test-2">
@@ -1126,17 +1363,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="600"
-    height="400"
-    src="https://www.youtube.com/embed/kbyG-3_yVhA"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
 </div>
 </div>
 <div class="section" id="h-2-25-phi-0-7-test-1">
@@ -1148,17 +1374,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="600"
-    height="400"
-    src="https://www.youtube.com/embed/p6V2hfmDZLs"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
 </div>
 </div>
 <div class="section" id="h-2-25-phi-0-7-test-2">
@@ -1170,17 +1385,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="600"
-    height="400"
-    src="https://www.youtube.com/embed/xOEmpqiB3ac"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
 </div>
 </div>
 <div class="section" id="h-2-25-phi-0-8-test-1">
@@ -1192,17 +1396,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="600"
-    height="400"
-    src="https://www.youtube.com/embed/HTaZDBRsEQ8"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
 </div>
 </div>
 <div class="section" id="h-2-25-phi-0-8-test-2">
@@ -1214,17 +1407,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="600"
-    height="400"
-    src="https://www.youtube.com/embed/ooZRDF80R6E"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
 </div>
 </div>
 <div class="section" id="h-2-25-phi-0-9-test-1">
@@ -1236,17 +1418,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="600"
-    height="400"
-    src="https://www.youtube.com/embed/SycQsYzcJZg"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
 </div>
 </div>
 <div class="section" id="h-2-25-phi-0-9-test-2">
@@ -1258,17 +1429,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="600"
-    height="400"
-    src="https://www.youtube.com/embed/vyCFxFCZoZ4"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
 </div>
 </div>
 <div class="section" id="h-2-25-phi-1-0-test-1">
@@ -1280,17 +1440,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="600"
-    height="400"
-    src="https://www.youtube.com/embed/Pa-r-qzj0FE"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
 </div>
 </div>
 </div>
