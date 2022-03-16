@@ -1,4 +1,4 @@
-# Project III:Quasi 2D FlameSheet combustor
+# Quasi 2D FlameSheet combustor
 
 ```{tableofcontents}
 ```
