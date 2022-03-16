@@ -1,4 +1,4 @@
-# Experiment II:Scaled FlameSheet combustor
+# Scaled FlameSheet combustor
 
 ```{tableofcontents}
 ```
