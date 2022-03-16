@@ -8,12 +8,13 @@ parts:
   chapters:
   - file: docs/projects/combustor_tube/experiment_1
     sections:
-    - file: docs/projects/combustor_tube/analysis/flashback_propensity
+    - file: docs/projects/combustor_tube/flashback_propensity
     - file: docs/projects/combustor_tube/analysis/flame_front_analysis
 
   - file: docs/projects/combustor_flamesheet_cyl/experiment_2
     sections:
     - file: docs/projects/combustor_flamesheet_cyl/flashback_propensity
+    - file: docs/projects/combustor_flamesheet_cyl/logbooks/first_exploration
 
   - file: docs/projects/combustor_flamesheet_2d/experiment_3
     sections:
@@ -22,3 +23,4 @@ parts:
 - caption: Notebooks
   chapters:
   - file: docs/notebooks/premixed_flame_properties
+
