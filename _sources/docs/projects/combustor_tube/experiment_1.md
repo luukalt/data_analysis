@@ -1,6 +1,6 @@
 # Tube burner 
 
-Overview of the tube burner experiment.
+Overview of the tube burner experiments.
 
 ```{tableofcontents}
 ```
