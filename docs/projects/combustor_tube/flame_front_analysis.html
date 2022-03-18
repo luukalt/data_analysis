@@ -56,6 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Scaled FlameSheet combustor" href="../combustor_flamesheet_cyl/experiment_2.html" />
+    <link rel="prev" title="Flashback propensity" href="flashback_propensity.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -104,20 +106,25 @@ const thebe_selector_output = ".output, .cell_output"
   Projects
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="experiment_1.html">
    Tube burner
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="flashback_propensity.html">
      Flashback propensity
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Flame front analysis
     </a>
    </li>
   </ul>
@@ -336,7 +343,7 @@ Filippo already reported the velocity fluctuations.</p>
 <h3>Velocity fluctuations<a class="headerlink" href="#velocity-fluctuations" title="Permalink to this headline">¶</a></h3>
 <p>This part focuses on flame 1 and flame 2 of paper 1. Data is stored under Project Data (U:): <strong>U:\High hydrogen\ffaldella\data</strong></p>
 <table class="table" id="tab-flames-info">
-<caption><span class="caption-text">Specifications of flame 1 and 2.</span><a class="headerlink" href="#tab-flames-info" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Specifications of flame 1 and 2.</span><a class="headerlink" href="#tab-flames-info" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 13%" />
 <col style="width: 13%" />
@@ -381,22 +388,22 @@ Filippo already reported the velocity fluctuations.</p>
 </table>
 <div class="figure align-default" id="flame-1-vel-fluc">
 <a class="reference internal image-reference" href="../../../_images/flame_1.png"><img alt="../../../_images/flame_1.png" src="../../../_images/flame_1.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Normalized mean velocity field <span class="math notranslate nohighlight">\(\overline{u}/U_{b}\)</span>, Normalized Reynolds normal stress in the axial <span class="math notranslate nohighlight">\(\overline{u'u'}/U_{b}^2\)</span> and radial direction <span class="math notranslate nohighlight">\(\overline{v'v'}/U_{b}^2\)</span>, respectively. The dashed line indicates the average flame front location and is used to determine the flame cone angle.</span><a class="headerlink" href="#flame-1-vel-fluc" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Normalized mean velocity field <span class="math notranslate nohighlight">\(\overline{u}/U_{b}\)</span>, Normalized Reynolds normal stress in the axial <span class="math notranslate nohighlight">\(\overline{u'u'}/U_{b}^2\)</span> and radial direction <span class="math notranslate nohighlight">\(\overline{v'v'}/U_{b}^2\)</span>, respectively. The dashed line indicates the average flame front location and is used to determine the flame cone angle.</span><a class="headerlink" href="#flame-1-vel-fluc" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="flame-2-vel-fluc">
 <a class="reference internal image-reference" href="../../../_images/flame_2.png"><img alt="../../../_images/flame_2.png" src="../../../_images/flame_2.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Normalized mean velocity field <span class="math notranslate nohighlight">\(\overline{u}/U_{b}\)</span>, Normalized Reynolds normal stress in the axial <span class="math notranslate nohighlight">\(\overline{u'u'}/U_{b}^2\)</span> and radial direction <span class="math notranslate nohighlight">\(\overline{v'v'}/U_{b}^2\)</span>, respectively. The dashed line indicates the average flame front location and is used to determine the flame cone angle.</span><a class="headerlink" href="#flame-2-vel-fluc" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Normalized mean velocity field <span class="math notranslate nohighlight">\(\overline{u}/U_{b}\)</span>, Normalized Reynolds normal stress in the axial <span class="math notranslate nohighlight">\(\overline{u'u'}/U_{b}^2\)</span> and radial direction <span class="math notranslate nohighlight">\(\overline{v'v'}/U_{b}^2\)</span>, respectively. The dashed line indicates the average flame front location and is used to determine the flame cone angle.</span><a class="headerlink" href="#flame-2-vel-fluc" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="distribution-of-flame-front-contours">
 <h3>Distribution of flame front contours<a class="headerlink" href="#distribution-of-flame-front-contours" title="Permalink to this headline">¶</a></h3>
 <p>The flame front of the raw PIV images was detected using a self-made algorithm using Gaussian filters, enhancement of the images and eventually a binarization of the image.
-<code class="xref std std-numref docutils literal notranslate"><span class="pre">flame_1_frame0_B00004</span></code> shows an example.</p>
+<a class="reference internal" href="#flame-1-frame0-b00004"><span class="std std-numref">Fig. 3</span></a> shows an example.</p>
 <div class="figure align-default" id="flame-1-frame0-b00004">
 <a class="reference internal image-reference" href="../../../_images/flame_1_Cam_Date=190923_Time=164708_Frame0_B00004.png"><img alt="../../../_images/flame_1_Cam_Date=190923_Time=164708_Frame0_B00004.png" src="../../../_images/flame_1_Cam_Date=190923_Time=164708_Frame0_B00004.png" style="width: 50%;" /></a>
-<p class="caption"><span class="caption-text">Raw PIV image of flame 1 with the flame front contour as determined by the self-made algorithm (red line).</span><a class="headerlink" href="#flame-1-frame0-b00004" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Raw PIV image of flame 1 with the flame front contour as determined by the self-made algorithm (red line).</span><a class="headerlink" href="#flame-1-frame0-b00004" title="Permalink to this image">¶</a></p>
 </div>
-<p><code class="xref std std-numref docutils literal notranslate"><span class="pre">flame_1_pdf_front_5000</span></code> and <code class="xref std std-numref docutils literal notranslate"><span class="pre">flame_2_pdf_front_5000</span></code> show the distribution of the flame front for 5000 images.</p>
+<p><a class="reference internal" href="#flame-1-pdf-front-5000"><span class="std std-numref">Fig. 4</span></a> and <a class="reference internal" href="#flame-2-pdf-front-5000"><span class="std std-numref">Fig. 5</span></a> show the distribution of the flame front for 5000 images.</p>
 <div class="sphinx-bs container-fluid docutils">
 <div class="row docutils">
 <div class="d-flex col-xl-6 docutils">
@@ -404,7 +411,7 @@ Filippo already reported the velocity fluctuations.</p>
 <div class="card-body docutils">
 <div class="figure align-default" id="flame-1-pdf-front-5000">
 <a class="reference internal image-reference" href="../../../_images/flame_1_pdf_front_5000.png"><img alt="../../../_images/flame_1_pdf_front_5000.png" src="../../../_images/flame_1_pdf_front_5000.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">PDF of flame front contours of flame 1</span><a class="headerlink" href="#flame-1-pdf-front-5000" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">PDF of flame front contours of flame 1</span><a class="headerlink" href="#flame-1-pdf-front-5000" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -414,7 +421,7 @@ Filippo already reported the velocity fluctuations.</p>
 <div class="card-body docutils">
 <div class="figure align-default" id="flame-2-pdf-front-5000">
 <a class="reference internal image-reference" href="../../../_images/flame_2_pdf_front_5000.png"><img alt="../../../_images/flame_2_pdf_front_5000.png" src="../../../_images/flame_2_pdf_front_5000.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">PDF of flame front contours of flame 2</span><a class="headerlink" href="#flame-2-pdf-front-5000" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">PDF of flame front contours of flame 2</span><a class="headerlink" href="#flame-2-pdf-front-5000" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -424,7 +431,7 @@ Filippo already reported the velocity fluctuations.</p>
 </div>
 <div class="section" id="average-flame-angle">
 <h3>Average Flame angle<a class="headerlink" href="#average-flame-angle" title="Permalink to this headline">¶</a></h3>
-<p>The PDFs shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">flame_1_pdf_front_5000</span></code> and <code class="xref std std-numref docutils literal notranslate"><span class="pre">flame_2_pdf_front_5000</span></code> were used to find the average flame angle. As a first step, slices of the PDF were taken at different locations in axial direction, see <code class="xref std std-numref docutils literal notranslate"><span class="pre">flame_1_pdf_front_5000_slices</span></code> and <code class="xref std std-numref docutils literal notranslate"><span class="pre">flame_2_pdf_front_5000_slices</span></code>. The PDF data was smoothened using a <strong>Savitzky–Golay</strong> filter with a <strong>window length of 101 pixels</strong> and a <strong>polynomial order to of 3</strong>. It was chosen that the peaks of the filtered PDF data seen in the figures correspond to the average location of the flame front in the radial direction.</p>
+<p>The PDFs shown in <a class="reference internal" href="#flame-1-pdf-front-5000"><span class="std std-numref">Fig. 4</span></a> and <a class="reference internal" href="#flame-2-pdf-front-5000"><span class="std std-numref">Fig. 5</span></a> were used to find the average flame angle. As a first step, slices of the PDF were taken at different locations in axial direction, see <a class="reference internal" href="#flame-1-pdf-front-5000-slices"><span class="std std-numref">Fig. 6</span></a> and <a class="reference internal" href="#flame-2-pdf-front-5000-slices"><span class="std std-numref">Fig. 7</span></a>. The PDF data was smoothened using a <strong>Savitzky–Golay</strong> filter with a <strong>window length of 101 pixels</strong> and a <strong>polynomial order to of 3</strong>. It was chosen that the peaks of the filtered PDF data seen in the figures correspond to the average location of the flame front in the radial direction.</p>
 <div class="sphinx-bs container-fluid docutils">
 <div class="row docutils">
 <div class="d-flex col-xl-6 docutils">
@@ -432,7 +439,7 @@ Filippo already reported the velocity fluctuations.</p>
 <div class="card-body docutils">
 <div class="figure align-default" id="flame-1-pdf-front-5000-slices">
 <a class="reference internal image-reference" href="../../../_images/flame_1_pdf_front_5000_slices.png"><img alt="../../../_images/flame_1_pdf_front_5000_slices.png" src="../../../_images/flame_1_pdf_front_5000_slices.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">PDF of flame front contours of flame 1 at different locations in axial direction.</span><a class="headerlink" href="#flame-1-pdf-front-5000-slices" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">PDF of flame front contours of flame 1 at different locations in axial direction.</span><a class="headerlink" href="#flame-1-pdf-front-5000-slices" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -442,14 +449,14 @@ Filippo already reported the velocity fluctuations.</p>
 <div class="card-body docutils">
 <div class="figure align-default" id="flame-2-pdf-front-5000-slices">
 <a class="reference internal image-reference" href="../../../_images/flame_2_pdf_front_5000_slices.png"><img alt="../../../_images/flame_2_pdf_front_5000_slices.png" src="../../../_images/flame_2_pdf_front_5000_slices.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">PDF of flame front contours of flame 2 at different locations in axial direction.</span><a class="headerlink" href="#flame-2-pdf-front-5000-slices" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">PDF of flame front contours of flame 2 at different locations in axial direction.</span><a class="headerlink" href="#flame-2-pdf-front-5000-slices" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>Finally, the average flame angle could be determined using a linear fit trhough the extracted average flame front locations, see <code class="xref std std-numref docutils literal notranslate"><span class="pre">flame_1_pdf_front_5000_angle</span></code> and <code class="xref std std-numref docutils literal notranslate"><span class="pre">flame_2_pdf_front_5000_angle</span></code>. The angles are 33.1<span class="math notranslate nohighlight">\(^\circ\)</span> and 41.4<span class="math notranslate nohighlight">\(^\circ\)</span>, respectively.</p>
+<p>Finally, the average flame angle could be determined using a linear fit trhough the extracted average flame front locations, see <a class="reference internal" href="#flame-1-pdf-front-5000-angle"><span class="std std-numref">Fig. 8</span></a> and <a class="reference internal" href="#flame-2-pdf-front-5000-angle"><span class="std std-numref">Fig. 9</span></a>. The angles are 33.1<span class="math notranslate nohighlight">\(^\circ\)</span> and 41.4<span class="math notranslate nohighlight">\(^\circ\)</span>, respectively.</p>
 <div class="sphinx-bs container-fluid docutils">
 <div class="row docutils">
 <div class="d-flex col-xl-6 docutils">
@@ -457,7 +464,7 @@ Filippo already reported the velocity fluctuations.</p>
 <div class="card-body docutils">
 <div class="figure align-default" id="flame-1-pdf-front-5000-angle">
 <a class="reference internal image-reference" href="../../../_images/flame_1_pdf_front_5000_angle.png"><img alt="../../../_images/flame_1_pdf_front_5000_angle.png" src="../../../_images/flame_1_pdf_front_5000_angle.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Average flame front and corresponding angle of flame 1.</span><a class="headerlink" href="#flame-1-pdf-front-5000-angle" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Average flame front and corresponding angle of flame 1.</span><a class="headerlink" href="#flame-1-pdf-front-5000-angle" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -467,7 +474,7 @@ Filippo already reported the velocity fluctuations.</p>
 <div class="card-body docutils">
 <div class="figure align-default" id="flame-2-pdf-front-5000-angle">
 <a class="reference internal image-reference" href="../../../_images/flame_2_pdf_front_5000_angle.png"><img alt="../../../_images/flame_2_pdf_front_5000_angle.png" src="../../../_images/flame_2_pdf_front_5000_angle.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Average flame front and corresponding angle of flame 2.</span><a class="headerlink" href="#flame-2-pdf-front-5000-angle" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Average flame front and corresponding angle of flame 2.</span><a class="headerlink" href="#flame-2-pdf-front-5000-angle" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -502,7 +509,21 @@ Filippo already reported the velocity fluctuations.</p>
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="flashback_propensity.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Flashback propensity</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../combustor_flamesheet_cyl/experiment_2.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Scaled FlameSheet combustor</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>
