@@ -9,7 +9,7 @@ parts:
   - file: docs/projects/combustor_tube/experiment_1
     sections:
     - file: docs/projects/combustor_tube/flashback_propensity
-    - file: docs/projects/combustor_tube/analysis/flame_front_analysis
+    - file: docs/projects/combustor_tube/flame_front_analysis
 
   - file: docs/projects/combustor_flamesheet_cyl/experiment_2
     sections:
