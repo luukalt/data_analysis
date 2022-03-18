@@ -6,3 +6,4 @@ bokeh
 plotly
 scipy
 conda
+pandas
