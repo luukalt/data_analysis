@@ -16,10 +16,10 @@ kernelspec:
 Follow this site to keep track of my PhD project. Hope you like it! <br>
 
 The PhD project consists of 3 tracks:
-* Fundamental experiments on flashback in hydrogen jet flames using a [tube burner](projects/combustor_tube/experiment_1.md)
+* Fundamental experiments on flashback in hydrogen jet flames using a [tube burner](projects/combustor_tube/experiment_1.md).
 * Investigation of hydrogen flame flashback in a scaled gas turbine combustor:
-  * [Scaled FlameSheet combustor](projects/combustor_flamesheet_cyl/experiment_2.md)
-  * [Quasi 2D FlameSheet combustor](projects/combustor_flamesheet_2d/experiment_3.md)
+  * [scaled FlameSheet combustor](projects/combustor_flamesheet_cyl/experiment_2.md)
+  * [quasi 2D FlameSheet combustor](projects/combustor_flamesheet_2d/experiment_3.md)
 * Validate and adapt flashback models for hydrogen combustion.
 
 
