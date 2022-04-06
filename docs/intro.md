@@ -13,5 +13,14 @@ kernelspec:
 
 # Introduction
 
-This site provides a summary of my PhD project. Hope you like it! <br>
+Follow this site to keep track of my PhD project. Hope you like it! <br>
+
+The PhD project consists of 3 tracks:
+* Investigation of hydrogen flame flashback in a scaled gas turbine combustor.
+* Fundamental experiments on flashback in hydrogen jet flames.
+* Validate and adapt flashback models for hydrogen combustion.
+
+
+
+
 
