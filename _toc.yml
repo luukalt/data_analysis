@@ -24,6 +24,6 @@ parts:
   chapters:
   - file: docs/notebooks/premixed_flame_properties
 
-- caption: Python files
-  chapters:
-  - file: docs/notebooks/premixed_flame_properties
+# - caption: Python files
+#   chapters:
+#   - file: docs/notebooks/premixed_flame_properties
