@@ -148,25 +148,25 @@ The above exception was the direct cause of the following exception:
 [1;32m   2297[0m             [0;32mif[0m [0mbbox_inches[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 
 [0;32m/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/matplotlib/artist.py[0m in [0;36mdraw_wrapper[0;34m(artist, renderer, *args, **kwargs)[0m
-[1;32m     71[0m     [0;34m@[0m[0mwraps[0m[0;34m([0m[0mdraw[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     72[0m     [0;32mdef[0m [0mdraw_wrapper[0m[0;34m([0m[0martist[0m[0;34m,[0m [0mrenderer[0m[0;34m,[0m [0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 73[0;31m         [0mresult[0m [0;34m=[0m [0mdraw[0m[0;34m([0m[0martist[0m[0;34m,[0m [0mrenderer[0m[0;34m,[0m [0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     74[0m         [0;32mif[0m [0mrenderer[0m[0;34m.[0m[0m_rasterizing[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     75[0m             [0mrenderer[0m[0;34m.[0m[0mstop_rasterizing[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     72[0m     [0;34m@[0m[0mwraps[0m[0;34m([0m[0mdraw[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     73[0m     [0;32mdef[0m [0mdraw_wrapper[0m[0;34m([0m[0martist[0m[0;34m,[0m [0mrenderer[0m[0;34m,[0m [0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 74[0;31m         [0mresult[0m [0;34m=[0m [0mdraw[0m[0;34m([0m[0martist[0m[0;34m,[0m [0mrenderer[0m[0;34m,[0m [0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     75[0m         [0;32mif[0m [0mrenderer[0m[0;34m.[0m[0m_rasterizing[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     76[0m             [0mrenderer[0m[0;34m.[0m[0mstop_rasterizing[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
 [0;32m/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/matplotlib/artist.py[0m in [0;36mdraw_wrapper[0;34m(artist, renderer)[0m
-[1;32m     48[0m                 [0mrenderer[0m[0;34m.[0m[0mstart_filter[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     49[0m [0;34m[0m[0m
-[0;32m---> 50[0;31m             [0;32mreturn[0m [0mdraw[0m[0;34m([0m[0martist[0m[0;34m,[0m [0mrenderer[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     51[0m         [0;32mfinally[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     52[0m             [0;32mif[0m [0martist[0m[0;34m.[0m[0mget_agg_filter[0m[0;34m([0m[0;34m)[0m [0;32mis[0m [0;32mnot[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     49[0m                 [0mrenderer[0m[0;34m.[0m[0mstart_filter[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     50[0m [0;34m[0m[0m
+[0;32m---> 51[0;31m             [0;32mreturn[0m [0mdraw[0m[0;34m([0m[0martist[0m[0;34m,[0m [0mrenderer[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     52[0m         [0;32mfinally[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     53[0m             [0;32mif[0m [0martist[0m[0;34m.[0m[0mget_agg_filter[0m[0;34m([0m[0;34m)[0m [0;32mis[0m [0;32mnot[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 
 [0;32m/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/matplotlib/figure.py[0m in [0;36mdraw[0;34m(self, renderer)[0m
-[1;32m   2836[0m             [0mself[0m[0;34m.[0m[0mpatch[0m[0;34m.[0m[0mdraw[0m[0;34m([0m[0mrenderer[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   2837[0m             mimage._draw_list_compositing_images(
-[0;32m-> 2838[0;31m                 renderer, self, artists, self.suppressComposite)
-[0m[1;32m   2839[0m [0;34m[0m[0m
-[1;32m   2840[0m             [0;32mfor[0m [0msfig[0m [0;32min[0m [0mself[0m[0;34m.[0m[0msubfigs[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   2844[0m             [0mself[0m[0;34m.[0m[0mpatch[0m[0;34m.[0m[0mdraw[0m[0;34m([0m[0mrenderer[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   2845[0m             mimage._draw_list_compositing_images(
+[0;32m-> 2846[0;31m                 renderer, self, artists, self.suppressComposite)
+[0m[1;32m   2847[0m [0;34m[0m[0m
+[1;32m   2848[0m             [0;32mfor[0m [0msfig[0m [0;32min[0m [0mself[0m[0;34m.[0m[0msubfigs[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 
 [0;32m/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/matplotlib/image.py[0m in [0;36m_draw_list_compositing_images[0;34m(renderer, parent, artists, suppress_composite)[0m
 [1;32m    130[0m     [0;32mif[0m [0mnot_composite[0m [0;32mor[0m [0;32mnot[0m [0mhas_images[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
@@ -176,11 +176,11 @@ The above exception was the direct cause of the following exception:
 [1;32m    134[0m         [0;31m# Composite any adjacent images together[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
 
 [0;32m/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/matplotlib/artist.py[0m in [0;36mdraw_wrapper[0;34m(artist, renderer)[0m
-[1;32m     48[0m                 [0mrenderer[0m[0;34m.[0m[0mstart_filter[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     49[0m [0;34m[0m[0m
-[0;32m---> 50[0;31m             [0;32mreturn[0m [0mdraw[0m[0;34m([0m[0martist[0m[0;34m,[0m [0mrenderer[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     51[0m         [0;32mfinally[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     52[0m             [0;32mif[0m [0martist[0m[0;34m.[0m[0mget_agg_filter[0m[0;34m([0m[0;34m)[0m [0;32mis[0m [0;32mnot[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     49[0m                 [0mrenderer[0m[0;34m.[0m[0mstart_filter[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     50[0m [0;34m[0m[0m
+[0;32m---> 51[0;31m             [0;32mreturn[0m [0mdraw[0m[0;34m([0m[0martist[0m[0;34m,[0m [0mrenderer[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     52[0m         [0;32mfinally[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     53[0m             [0;32mif[0m [0martist[0m[0;34m.[0m[0mget_agg_filter[0m[0;34m([0m[0;34m)[0m [0;32mis[0m [0;32mnot[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 
 [0;32m/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/matplotlib/axes/_base.py[0m in [0;36mdraw[0;34m(self, renderer)[0m
 [1;32m   3090[0m [0;34m[0m[0m
@@ -197,11 +197,11 @@ The above exception was the direct cause of the following exception:
 [1;32m    134[0m         [0;31m# Composite any adjacent images together[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
 
 [0;32m/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/matplotlib/artist.py[0m in [0;36mdraw_wrapper[0;34m(artist, renderer)[0m
-[1;32m     48[0m                 [0mrenderer[0m[0;34m.[0m[0mstart_filter[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     49[0m [0;34m[0m[0m
-[0;32m---> 50[0;31m             [0;32mreturn[0m [0mdraw[0m[0;34m([0m[0martist[0m[0;34m,[0m [0mrenderer[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     51[0m         [0;32mfinally[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     52[0m             [0;32mif[0m [0martist[0m[0;34m.[0m[0mget_agg_filter[0m[0;34m([0m[0;34m)[0m [0;32mis[0m [0;32mnot[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     49[0m                 [0mrenderer[0m[0;34m.[0m[0mstart_filter[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     50[0m [0;34m[0m[0m
+[0;32m---> 51[0;31m             [0;32mreturn[0m [0mdraw[0m[0;34m([0m[0martist[0m[0;34m,[0m [0mrenderer[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     52[0m         [0;32mfinally[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     53[0m             [0;32mif[0m [0martist[0m[0;34m.[0m[0mget_agg_filter[0m[0;34m([0m[0;34m)[0m [0;32mis[0m [0;32mnot[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 
 [0;32m/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/matplotlib/axis.py[0m in [0;36mdraw[0;34m(self, renderer, *args, **kwargs)[0m
 [1;32m   1158[0m         [0mticks_to_draw[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0m_update_ticks[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
