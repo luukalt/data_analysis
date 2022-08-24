@@ -877,6 +877,81 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bokeh.plotting</span> <span class="k">as</span> <span class="nn">bplt</span>
+<span class="kn">from</span> <span class="nn">jupyter_bokeh.widgets</span> <span class="kn">import</span> <span class="n">BokehModel</span>
+<span class="kn">import</span> <span class="nn">bokeh.io</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">widgets</span><span class="p">,</span> <span class="n">Layout</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+
+<span class="c1"># for the ipython notebook</span>
+<span class="n">bplt</span><span class="o">.</span><span class="n">output_notebook</span><span class="p">()</span>
+
+<span class="n">CSSNAMESLINK</span><span class="o">=</span><span class="s2">&quot;https://gist.githubusercontent.com/ek/913fe6905da054977ab9ebc00fc43470/raw/4294f90b9dee884a1146e40e7fc57ada62eb82a0/html-color-names-keywords-list.txt&quot;</span>
+<span class="n">css_response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">CSSNAMESLINK</span><span class="p">)</span>
+<span class="n">cssnames</span> <span class="o">=</span> <span class="n">css_response</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+<span class="c1"># generate simulated data</span>
+<span class="n">numvals</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># 10000</span>
+<span class="c1">#numvals = 10</span>
+<span class="n">xcol</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">numvals</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">iser</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">ix</span> <span class="ow">in</span> <span class="n">xcol</span><span class="p">:</span>
+        <span class="n">irow</span> <span class="o">=</span> <span class="n">iser</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">xcol</span><span class="p">)</span><span class="o">+</span><span class="n">ix</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">irow</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">iser</span><span class="p">)</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">irow</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ix</span><span class="p">)</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">irow</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span> <span class="n">ix</span><span class="o">*</span><span class="p">(</span><span class="n">iser</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mf">0.3</span> <span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;ser&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;xcol&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;ycol&quot;</span><span class="p">})</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span> <span class="c1"># without this, getting floats</span>
+
+<span class="c1"># prepare plot</span>
+<span class="n">datachans</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;ser&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">mycolors</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">cssnames</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">datachans</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mycolors</span><span class="p">)</span>
+
+<span class="n">myfig</span> <span class="o">=</span> <span class="n">bplt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">plot_height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="s2">&quot;pan,wheel_zoom,box_zoom,hover,reset&quot;</span><span class="p">,</span> <span class="n">sizing_mode</span><span class="o">=</span><span class="s2">&quot;stretch_width&quot;</span><span class="p">)</span>
+<span class="n">traces_l</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">ichan</span> <span class="ow">in</span> <span class="n">datachans</span><span class="p">:</span>
+    <span class="c1"># use .circle here instead of .line, as it meeds more drawing/is more sluggish</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">myfig</span><span class="o">.</span><span class="n">circle</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">line_color</span><span class="o">=</span><span class="n">mycolors</span><span class="p">[</span><span class="n">ichan</span><span class="p">])</span>
+    <span class="n">traces_l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="n">myfig</span><span class="o">.</span><span class="n">x_range</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">myfig</span><span class="o">.</span><span class="n">x_range</span><span class="o">.</span><span class="n">end</span> <span class="o">=</span> <span class="n">numvals</span>
+<span class="n">myfig</span><span class="o">.</span><span class="n">y_range</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">myfig</span><span class="o">.</span><span class="n">y_range</span><span class="o">.</span><span class="n">end</span> <span class="o">=</span> <span class="n">numvals</span>
+
+<span class="n">the_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">datachans</span><span class="p">),</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Test:&#39;</span><span class="p">)</span>
+
+<span class="n">myfig_model</span> <span class="o">=</span> <span class="n">BokehModel</span><span class="p">(</span><span class="n">myfig</span><span class="p">)</span>
+<span class="c1">#handle_myfig = bokeh.io.show(myfig, notebook_handle=True) # direct in VBox: TraitError: The &#39;children&#39; trait of a VBox instance contains an Instance of a TypedTuple which expected a Widget, not the CommsHandle </span>
+<span class="c1">#myfig_model = BokehModel(handle_myfig) # AssertionError: isinstance(model, LayoutDOM) </span>
+
+<span class="n">the_ui</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">the_slider</span><span class="p">,</span> <span class="n">myfig_model</span><span class="p">])</span>
+<span class="c1">#the_ui = widgets.VBox([the_slider, handle_myfig])</span>
+
+<span class="k">def</span> <span class="nf">update_plot</span><span class="p">(</span><span class="n">newval</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">ichan</span> <span class="ow">in</span> <span class="n">datachans</span><span class="p">:</span>
+        <span class="n">this_ch_data</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;ser&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">ichan</span><span class="p">]</span>
+        <span class="n">traces_l</span><span class="p">[</span><span class="n">ichan</span><span class="p">]</span><span class="o">.</span><span class="n">data_source</span><span class="o">.</span><span class="n">data</span><span class="o">=</span><span class="p">{</span> <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">this_ch_data</span><span class="p">[</span><span class="s2">&quot;xcol&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">this_ch_data</span><span class="p">[</span><span class="s2">&quot;ycol&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">+</span><span class="n">newval</span> <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">on_slider_change</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">change</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;change&#39;</span> <span class="ow">and</span> <span class="n">change</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="c1"># prevent multiple hits upon single value change</span>
+        <span class="n">update_plot</span><span class="p">(</span><span class="n">change</span><span class="p">[</span><span class="s1">&#39;new&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">0.1</span><span class="o">*</span><span class="n">numvals</span><span class="p">)</span>
+        <span class="c1"># &quot;Next tick callbacks only work within the context of a Bokeh server session. This function will no effect when Bokeh outputs to standalone HTML or Jupyter notebook cells.&quot;</span>
+        <span class="c1">#bplt.curdoc().add_next_tick_callback(update_plot)</span>
+<span class="n">the_slider</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">on_slider_change</span><span class="p">)</span>
+
+
+<span class="n">display</span><span class="p">(</span><span class="n">the_ui</span><span class="p">)</span>
+<span class="n">on_slider_change</span><span class="p">({</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="s1">&#39;new&#39;</span><span class="p">:</span> <span class="mi">0</span> <span class="p">})</span> <span class="c1"># initial call</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>
