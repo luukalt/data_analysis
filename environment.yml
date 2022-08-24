@@ -27,4 +27,5 @@ dependencies:
   - opencv
   - progressbar2
   - imutils
+  - jupyter_bokeh
 
