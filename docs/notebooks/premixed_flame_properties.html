@@ -900,7 +900,6 @@ title="Print to PDF"
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
 
 <span class="c1"># for the ipython notebook</span>
-<span class="n">bplt</span><span class="o">.</span><span class="n">reset_output</span><span class="p">()</span>
 <span class="n">bplt</span><span class="o">.</span><span class="n">output_notebook</span><span class="p">()</span>
 
 <span class="c1"># CSSNAMESLINK=&quot;https://gist.githubusercontent.com/ek/913fe6905da054977ab9ebc00fc43470/raw/4294f90b9dee884a1146e40e7fc57ada62eb82a0/html-color-names-keywords-list.txt&quot;</span>
@@ -957,17 +956,16 @@ title="Print to PDF"
         <span class="c1">#bplt.curdoc().add_next_tick_callback(update_plot)</span>
 <span class="n">the_slider</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">on_slider_change</span><span class="p">)</span>
 
-<span class="n">display</span><span class="p">(</span><span class="n">the_ui</span><span class="p">)</span>
+<span class="c1"># display(the_ui)</span>
 
 <span class="c1"># from ipywidgets_bokeh import IPyWidget</span>
 <span class="c1"># ipywidget = IPyWidget(widget=the_ui)</span>
 
-<span class="c1"># layout = row(</span>
-<span class="c1">#     plot,</span>
-<span class="c1">#     column(amp_slider, freq_slider, phase_slider, offset_slider),</span>
-<span class="c1"># )</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="n">row</span><span class="p">(</span>
+    <span class="n">myfig</span><span class="o">.</span><span class="n">get_model</span><span class="p">()</span>
+<span class="p">)</span>
 
-<span class="c1"># show(layout)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
 <span class="c1"># on_slider_change({&#39;type&#39;: &#39;change&#39;, &#39;name&#39;: &#39;value&#39;, &#39;new&#39;: 0 }) # initial call</span>
 </pre></div>
 </div>
@@ -975,7 +973,7 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output text_html"><div class="bk-root">
         <a href="https://bokeh.org" target="_blank" class="bk-logo bk-logo-small bk-logo-notebook"></a>
-        <span id="1002">Loading BokehJS ...</span>
+        <span id="13177">Loading BokehJS ...</span>
     </div>
 </div><script type="application/javascript">(function(root) {
   function now() {
@@ -1134,7 +1132,7 @@ const JS_MIME_TYPE = 'application/javascript';
      "</div>"}};
 
   function display_loaded() {
-    const el = document.getElementById("1002");
+    const el = document.getElementById("13177");
     if (el != null) {
       el.textContent = "BokehJS is loading...";
     }
@@ -1240,7 +1238,7 @@ if (force === true) {
       console.log("Bokeh: BokehJS failed to load within specified timeout.");
       root._bokeh_failed_load = true;
     } else if (force !== true) {
-      const cell = $(document.getElementById("1002")).parents('.cell').data().cell;
+      const cell = $(document.getElementById("13177")).parents('.cell').data().cell;
       cell.output_area.append_execute_result(NB_LOAD_WARNING)
     }
   }
@@ -1257,9 +1255,33 @@ if (force === true) {
 }(window));</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Grey&#39;, &#39;CornflowerBlue&#39;, &#39;Moccasin&#39;]
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "18ef5045e2904551b325ed318b0f6ca3", "version_major": 2, "version_minor": 0}
-</script></div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="nn">luukalt\phd\docs\notebooks\premixed_flame_properties.ipynb Cell 19</span> in <span class="ni">&lt;cell line: 75&gt;</span><span class="nt">()</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://github/luukalt/phd/docs/notebooks/premixed_flame_properties.ipynb#X24sdnNjb2RlLXZmcw%3D%3D?line=67&#39;</span><span class="o">&gt;</span><span class="mi">68</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">the_slider</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">on_slider_change</span><span class="p">)</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://github/luukalt/phd/docs/notebooks/premixed_flame_properties.ipynb#X24sdnNjb2RlLXZmcw%3D%3D?line=69&#39;</span><span class="o">&gt;</span><span class="mi">70</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="c1"># display(the_ui)</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://github/luukalt/phd/docs/notebooks/premixed_flame_properties.ipynb#X24sdnNjb2RlLXZmcw%3D%3D?line=70&#39;</span><span class="o">&gt;</span><span class="mi">71</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> 
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://github/luukalt/phd/docs/notebooks/premixed_flame_properties.ipynb#X24sdnNjb2RlLXZmcw%3D%3D?line=71&#39;</span><span class="o">&gt;</span><span class="mi">72</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="c1"># from ipywidgets_bokeh import IPyWidget</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://github/luukalt/phd/docs/notebooks/premixed_flame_properties.ipynb#X24sdnNjb2RlLXZmcw%3D%3D?line=72&#39;</span><span class="o">&gt;</span><span class="mi">73</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="c1"># ipywidget = IPyWidget(widget=the_ui)</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://github/luukalt/phd/docs/notebooks/premixed_flame_properties.ipynb#X24sdnNjb2RlLXZmcw%3D%3D?line=74&#39;</span><span class="o">&gt;</span><span class="mi">75</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">layout</span> <span class="o">=</span> <span class="n">row</span><span class="p">(</span>
+<span class="o">---&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://github/luukalt/phd/docs/notebooks/premixed_flame_properties.ipynb#X24sdnNjb2RlLXZmcw%3D%3D?line=75&#39;</span><span class="o">&gt;</span><span class="mi">76</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="n">myfig</span><span class="o">.</span><span class="n">get_model</span><span class="p">()</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://github/luukalt/phd/docs/notebooks/premixed_flame_properties.ipynb#X24sdnNjb2RlLXZmcw%3D%3D?line=76&#39;</span><span class="o">&gt;</span><span class="mi">77</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="p">)</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://github/luukalt/phd/docs/notebooks/premixed_flame_properties.ipynb#X24sdnNjb2RlLXZmcw%3D%3D?line=78&#39;</span><span class="o">&gt;</span><span class="mi">79</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">show</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+
+<span class="nn">File c:\Users\luuka\anaconda3\envs\cantera_env\lib\site-packages\bokeh\core\has_props.py:264,</span> in <span class="ni">HasProps.__getattr__</span><span class="nt">(self, name)</span>
+<span class="g g-Whitespace">    </span><span class="mi">261</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">descriptor</span><span class="p">,</span> <span class="nb">property</span><span class="p">):</span> <span class="c1"># Python property</span>
+<span class="g g-Whitespace">    </span><span class="mi">262</span>     <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__getattr__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">264</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raise_attribute_error_with_matches</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">properties</span><span class="p">)</span>
+
+<span class="nn">File c:\Users\luuka\anaconda3\envs\cantera_env\lib\site-packages\bokeh\core\has_props.py:272,</span> in <span class="ni">HasProps._raise_attribute_error_with_matches</span><span class="nt">(self, name, properties)</span>
+<span class="g g-Whitespace">    </span><span class="mi">269</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">matches</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">270</span>     <span class="n">matches</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">properties</span><span class="p">),</span> <span class="s2">&quot;possible&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">272</span> <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;unexpected attribute </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2"> to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s2"> attributes are </span><span class="si">{</span><span class="n">nice_join</span><span class="p">(</span><span class="n">matches</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="ne">AttributeError</span>: unexpected attribute &#39;get_model&#39; to Figure, similar attributes are sizing_mode
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
